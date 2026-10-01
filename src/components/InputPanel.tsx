@@ -3,6 +3,7 @@ import type { Hydrocarbon, ScenarioPreset } from '../types/physics';
 import { HYDROCARBONS, SCENARIOS } from '../constants/data';
 import { HelpCircle, ShieldCheck, Database, SlidersHorizontal, CloudRain } from 'lucide-react';
 import { Accordion } from './Accordion';
+import { SIMULATION_LIMITS, parseBoundedNumber } from '../utils/security';
 
 interface InputPanelProps {
   selectedHydrocarbon: Hydrocarbon;
@@ -181,7 +182,7 @@ export const InputPanel: React.FC<InputPanelProps> = ({
               value={volume}
               min={0.1}
               max={100000}
-              onChange={(e) => setVolume(Math.max(0.1, Number(e.target.value)))}
+              onChange={(e) => setVolume(parseBoundedNumber(e.target.value, SIMULATION_LIMITS.volume.min, SIMULATION_LIMITS.volume.max, volume))}
               className="w-24 bg-zinc-50 dark:bg-zinc-950/80 border border-zinc-200 dark:border-zinc-700/50 rounded-md px-2 py-1 text-[11px] text-right text-zinc-800 dark:text-cyan-400 focus:outline-none focus:border-cyan-500 font-mono transition-colors"
             />
           </div>
@@ -217,7 +218,7 @@ export const InputPanel: React.FC<InputPanelProps> = ({
               value={fillPercent}
               min={0}
               max={100}
-              onChange={(e) => setFillPercent(Math.min(100, Math.max(0, Number(e.target.value))))}
+              onChange={(e) => setFillPercent(parseBoundedNumber(e.target.value, SIMULATION_LIMITS.fillPercent.min, SIMULATION_LIMITS.fillPercent.max, fillPercent))}
               className="w-24 bg-zinc-50 dark:bg-zinc-950/80 border border-zinc-200 dark:border-zinc-700/50 rounded-md px-2 py-1 text-[11px] text-right text-zinc-800 dark:text-cyan-400 focus:outline-none focus:border-cyan-500 font-mono transition-colors"
             />
           </div>
@@ -248,7 +249,7 @@ export const InputPanel: React.FC<InputPanelProps> = ({
               min={0.01}
               max={500}
               step={0.1}
-              onChange={(e) => setPressure(Math.max(0.01, Number(e.target.value)))}
+              onChange={(e) => setPressure(parseBoundedNumber(e.target.value, SIMULATION_LIMITS.pressure.min, SIMULATION_LIMITS.pressure.max, pressure))}
               className="w-24 bg-zinc-50 dark:bg-zinc-950/80 border border-zinc-200 dark:border-zinc-700/50 rounded-md px-2 py-1 text-[11px] text-right text-zinc-800 dark:text-cyan-400 focus:outline-none focus:border-cyan-500 font-mono transition-colors"
             />
           </div>
@@ -258,7 +259,7 @@ export const InputPanel: React.FC<InputPanelProps> = ({
             max={selectedScenario.id === 'liquid_trapping' ? 200 : 50}
             step={0.1}
             value={pressure}
-            onChange={(e) => setPressure(Number(e.target.value))}
+            onChange={(e) => setPressure(parseBoundedNumber(e.target.value, SIMULATION_LIMITS.pressure.min, SIMULATION_LIMITS.pressure.max, pressure))}
             className="w-full"
           />
           <div className="flex justify-between text-[9px] text-zinc-400 dark:text-zinc-500 mt-1 font-mono uppercase">
@@ -284,7 +285,7 @@ export const InputPanel: React.FC<InputPanelProps> = ({
               value={temp}
               min={-200}
               max={250}
-              onChange={(e) => setTemp(Number(e.target.value))}
+            onChange={(e) => setTemp(parseBoundedNumber(e.target.value, SIMULATION_LIMITS.temp.min, SIMULATION_LIMITS.temp.max, temp))}
               className="w-24 bg-zinc-50 dark:bg-zinc-950/80 border border-zinc-200 dark:border-zinc-700/50 rounded-md px-2 py-1 text-[11px] text-right text-zinc-800 dark:text-cyan-400 focus:outline-none focus:border-cyan-500 font-mono transition-colors"
             />
           </div>
@@ -294,7 +295,7 @@ export const InputPanel: React.FC<InputPanelProps> = ({
             max={150}
             step={1}
             value={temp}
-            onChange={(e) => setTemp(Number(e.target.value))}
+              onChange={(e) => setTemp(parseBoundedNumber(e.target.value, SIMULATION_LIMITS.temp.min, SIMULATION_LIMITS.temp.max, temp))}
             className="w-full"
           />
           <div className="flex justify-between text-[9px] text-zinc-400 dark:text-zinc-500 mt-1 font-mono uppercase">
@@ -321,7 +322,7 @@ export const InputPanel: React.FC<InputPanelProps> = ({
               min={1}
               max={30}
               step={0.5}
-              onChange={(e) => setYieldPercent(Math.min(30, Math.max(1, Number(e.target.value))))}
+              onChange={(e) => setYieldPercent(parseBoundedNumber(e.target.value, SIMULATION_LIMITS.yieldPercent.min, SIMULATION_LIMITS.yieldPercent.max, yieldPercent))}
               className="w-24 bg-zinc-50 dark:bg-zinc-950/80 border border-zinc-200 dark:border-zinc-700/50 rounded-md px-2 py-1 text-[11px] text-right text-zinc-800 dark:text-rose-400 focus:outline-none focus:border-rose-500 font-mono transition-colors"
             />
           </div>
@@ -358,7 +359,7 @@ export const InputPanel: React.FC<InputPanelProps> = ({
               value={ambientTemp}
               min={-20}
               max={50}
-              onChange={(e) => setAmbientTemp(Number(e.target.value))}
+              onChange={(e) => setAmbientTemp(parseBoundedNumber(e.target.value, SIMULATION_LIMITS.ambientTemp.min, SIMULATION_LIMITS.ambientTemp.max, ambientTemp))}
               className="w-24 bg-zinc-50 dark:bg-zinc-950/80 border border-zinc-200 dark:border-zinc-700/50 rounded-md px-2 py-1 text-[11px] text-right text-zinc-800 dark:text-cyan-400 focus:outline-none focus:border-cyan-500 font-mono transition-colors"
             />
           </div>
@@ -394,7 +395,7 @@ export const InputPanel: React.FC<InputPanelProps> = ({
               value={humidity}
               min={0}
               max={100}
-              onChange={(e) => setHumidity(Math.min(100, Math.max(0, Number(e.target.value))))}
+              onChange={(e) => setHumidity(parseBoundedNumber(e.target.value, SIMULATION_LIMITS.humidity.min, SIMULATION_LIMITS.humidity.max, humidity))}
               className="w-24 bg-zinc-50 dark:bg-zinc-950/80 border border-zinc-200 dark:border-zinc-700/50 rounded-md px-2 py-1 text-[11px] text-right text-zinc-800 dark:text-cyan-400 focus:outline-none focus:border-cyan-500 font-mono transition-colors"
             />
           </div>

@@ -237,10 +237,67 @@ Threat Zone implements the strict **Industrial Design System (IDS)** specificati
    npm run build
    ```
 
+## 🔐 Security Requirements
+
+Threat Zone is currently a client-only simulator. It has no accounts, passwords,
+private API, or persistence service, so authentication, password hashing, and API
+rate limiting are not implemented. They become mandatory before adding saved
+scenarios, paid access, subscriptions, or any server endpoint.
+
+### Secure Vibe Coding Comparison
+
+| Secure Vibe Coding requirement | Threat Zone today | Required security decision |
+| :--- | :--- | :--- |
+| Server-side validation | No server exists; UI and calculation boundaries now reject non-finite and out-of-range values. | Keep the physics boundary defensive. If an API is added, validate with a server-side schema before calculation or persistence. |
+| Login rate limiting | Not applicable to the public SPA. | Add IP/account/device-aware limits, bot controls, MFA and credential-stuffing detection before introducing login. |
+| Password hashing | No passwords are collected. | Use a managed identity provider or Argon2id/bcrypt through a maintained library. Never store plaintext or frontend credentials. |
+| Safe errors | No authenticated API error surface; share-state parsing fails closed. | Return generic production errors, keep stack traces and diagnostics in protected server logs. |
+| Established authentication | No authentication or authorization boundary. | Use an established provider for accounts, sessions, recovery, MFA and OAuth/OIDC. Add server-side authorization separately. |
+| Authorization and ownership | No user-owned resources or backend records. | For saved scenarios, reports or projects, enforce tenant/user ownership on every read, update, export and delete. Test User A against User B. |
+| Input and file abuse | Numeric controls and URL imports are bounded/allowlisted; the client has no file upload. | Add server schema validation, upload type/size/content checks, request size limits and safe parsers for any future import/export endpoint. |
+| Secrets | No application secret is required by the SPA. | Keep API keys and cloud credentials server-side or in the deployment secret store; never expose them in `VITE_*` frontend variables or Git. |
+| API and dependency security | No private API; external map origins are restricted by CSP. | Authenticate sensitive endpoints, rate-limit expensive calculations, minimize responses, run dependency audits and pin/verify production builds. |
+| Production configuration | HTTPS and security headers are configured in `vercel.json` and the document CSP. | Verify HTTPS, HSTS, secure cookies, CORS allowlists, CSP, debug-off mode and security headers in the deployed environment. |
+
+The current controls reduce accidental misuse and unsafe state restoration; they do
+not turn a browser-only application into a trusted authority. Any result used for
+real emergency response must be reviewed against certified process-safety methods,
+current facility data and an independent qualified professional.
+
+The client enforces finite, bounded simulation inputs at the controls and physics
+engine boundary, including wind inputs. Shared scenarios are capped in size,
+accept only allowlisted scenario, region and material IDs plus bounded numeric
+fields, ignore unknown or invalid values, and generate new links in the URL
+fragment rather than the query string. The legacy query format is still read so
+existing links continue to work. Clipboard failures and oversized links fail
+closed without interrupting the simulator.
+
+Before deployment, the hosting layer must provide HTTPS, the security headers in
+`vercel.json` (or equivalent CDN configuration), dependency checks, and build
+verification. For any future backend, require server-side schema validation,
+authorization per resource, ownership checks, rate limiting, generic production
+errors, secret management outside frontend code, audit logging, timeouts and
+resource limits. Test unauthorized requests and User A/User B resource access
+before release.
+
+Suggested release checks:
+
+```bash
+npm ci
+npm run lint
+npm run build
+npm audit --audit-level=high
+```
+
+The repository currently has a lockfile/package manifest mismatch, so `npm ci`,
+npm run security:check
+
 ---
-
-## 📁 Repository Directory Structure
-
+`npm ci` now has a synchronized lockfile. The security check remains a release
+gate: the current dependency graph still reports high-severity transitive issues
+through the deck.gl/loaders chain. Do not use `npm audit fix --force` without
+reviewing the breaking dependency changes; update or replace the affected map
+stack, then rerun this gate before a security-sensitive release.
 ```plaintext
 Threat-Zone/
 ├── public/                     # Static assets, facility showcases & icons

@@ -17,11 +17,15 @@ export const ExportBar: React.FC<ExportBarProps> = ({
   params,
 }) => {
   const handleCopy = async () => {
-    await copyScenarioSummary(result, selectedScenario, selectedRegion);
+    try {
+      await copyScenarioSummary(result, selectedScenario, selectedRegion);
+    } catch {}
   };
 
   const handleUrl = async () => {
-    await copyScenarioUrl({ regionId: selectedRegion.id, scenarioId: selectedScenario.id, ...params });
+    try {
+      await copyScenarioUrl({ regionId: selectedRegion.id, scenarioId: selectedScenario.id, ...params });
+    } catch {}
   };
 
   return (

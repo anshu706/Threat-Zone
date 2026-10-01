@@ -21,6 +21,7 @@ import type { ShowcaseProject } from './components/PinnedProjectShowcase';
 import { ProjectDetailModal } from './components/ProjectDetailModal';
 import { runSimulation } from './utils/physics';
 import { parseScenarioFromUrl } from './utils/exportScenario';
+import { clampFiniteNumber, normalizeWindInputs, SIMULATION_LIMITS } from './utils/security';
 import { SCENARIOS, HYDROCARBONS } from './constants/data';
 import { DEFAULT_REGION, INDIAN_REGIONS } from './constants/regions';
 import type { IndianRegion, ScenarioPreset } from './types/physics';
@@ -99,31 +100,49 @@ function App() {
   const [selectedHydrocarbon, setSelectedHydrocarbon] = useState(initialHydrocarbon);
 
   const [volume, setVolume] = useState<number>(
-    typeof initialUrlState?.volume === 'number' ? initialUrlState.volume : initialScenario.volumeDefault
+    typeof initialUrlState?.volume === 'number'
+      ? clampFiniteNumber(initialUrlState.volume, SIMULATION_LIMITS.volume.min, SIMULATION_LIMITS.volume.max, initialScenario.volumeDefault)
+      : initialScenario.volumeDefault
   );
   const [fillPercent, setFillPercent] = useState<number>(
-    typeof initialUrlState?.fillPercent === 'number' ? initialUrlState.fillPercent : initialScenario.fillPercentDefault
+    typeof initialUrlState?.fillPercent === 'number'
+      ? clampFiniteNumber(initialUrlState.fillPercent, SIMULATION_LIMITS.fillPercent.min, SIMULATION_LIMITS.fillPercent.max, initialScenario.fillPercentDefault)
+      : initialScenario.fillPercentDefault
   );
   const [pressure, setPressure] = useState<number>(
-    typeof initialUrlState?.pressure === 'number' ? initialUrlState.pressure : initialScenario.pressureDefault
+    typeof initialUrlState?.pressure === 'number'
+      ? clampFiniteNumber(initialUrlState.pressure, SIMULATION_LIMITS.pressure.min, SIMULATION_LIMITS.pressure.max, initialScenario.pressureDefault)
+      : initialScenario.pressureDefault
   );
   const [temp, setTemp] = useState<number>(
-    typeof initialUrlState?.temp === 'number' ? initialUrlState.temp : initialScenario.tempDefault
+    typeof initialUrlState?.temp === 'number'
+      ? clampFiniteNumber(initialUrlState.temp, SIMULATION_LIMITS.temp.min, SIMULATION_LIMITS.temp.max, initialScenario.tempDefault)
+      : initialScenario.tempDefault
   );
   const [yieldPercent, setYieldPercent] = useState<number>(
-    typeof initialUrlState?.yieldPercent === 'number' ? initialUrlState.yieldPercent : initialScenario.yieldDefault
+    typeof initialUrlState?.yieldPercent === 'number'
+      ? clampFiniteNumber(initialUrlState.yieldPercent, SIMULATION_LIMITS.yieldPercent.min, SIMULATION_LIMITS.yieldPercent.max, initialScenario.yieldDefault)
+      : initialScenario.yieldDefault
   );
   const [ambientTemp, setAmbientTemp] = useState<number>(
-    typeof initialUrlState?.ambientTemp === 'number' ? initialUrlState.ambientTemp : 25
+    typeof initialUrlState?.ambientTemp === 'number'
+      ? clampFiniteNumber(initialUrlState.ambientTemp, SIMULATION_LIMITS.ambientTemp.min, SIMULATION_LIMITS.ambientTemp.max, 25)
+      : 25
   );
   const [humidity, setHumidity] = useState<number>(
-    typeof initialUrlState?.humidity === 'number' ? initialUrlState.humidity : 50
+    typeof initialUrlState?.humidity === 'number'
+      ? clampFiniteNumber(initialUrlState.humidity, SIMULATION_LIMITS.humidity.min, SIMULATION_LIMITS.humidity.max, 50)
+      : 50
   );
   const [windSpeed, setWindSpeed] = useState<number>(
-    typeof initialUrlState?.windSpeed === 'number' ? initialUrlState.windSpeed : 15
+    typeof initialUrlState?.windSpeed === 'number'
+      ? normalizeWindInputs(initialUrlState.windSpeed, 240).windSpeed
+      : 15
   );
   const [windDirection, setWindDirection] = useState<number>(
-    typeof initialUrlState?.windDirection === 'number' ? initialUrlState.windDirection : 240
+    typeof initialUrlState?.windDirection === 'number'
+      ? normalizeWindInputs(15, initialUrlState.windDirection).windDirection
+      : 240
   );
 
   const [activeTab, setActiveTab] = useState<'blast' | 'thermal'>('blast');

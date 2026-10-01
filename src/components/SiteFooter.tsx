@@ -1,10 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { ArrowRight, CheckCircle2 } from 'lucide-react';
 
 export const SiteFooter: React.FC = () => {
   const [currentTime, setCurrentTime] = useState('');
-  const [subscribed, setSubscribed] = useState(false);
-  const [email, setEmail] = useState('');
 
   useEffect(() => {
     const updateTime = () => {
@@ -24,13 +21,6 @@ export const SiteFooter: React.FC = () => {
     const interval = setInterval(updateTime, 1000);
     return () => clearInterval(interval);
   }, []);
-
-  const handleSubscribe = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (email.trim()) {
-      setSubscribed(true);
-    }
-  };
 
   const scrollTo = (id: string) => {
     const el = document.getElementById(id);
@@ -83,26 +73,9 @@ export const SiteFooter: React.FC = () => {
           <span className="dh-footer__subscribeLabel">
             Hazard Bulletins & Consequence Advisories
           </span>
-          {subscribed ? (
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: '#10b981', fontFamily: 'var(--font-mono)', fontSize: '0.85rem' }}>
-              <CheckCircle2 className="w-4 h-4" />
-              <span>Subscribed to Indian HazMat alerts</span>
-            </div>
-          ) : (
-            <form onSubmit={handleSubscribe} className="dh-footer__subscribeForm">
-              <input
-                type="email"
-                placeholder="ENTER CORPORATE HSE EMAIL..."
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
-                className="dh-footer__input"
-              />
-              <button type="submit" className="dh-footer__submitBtn" aria-label="Subscribe">
-                <ArrowRight className="w-4 h-4" />
-              </button>
-            </form>
-          )}
+          <p className="dh-footer__lead" style={{ margin: 0, maxWidth: '34rem' }}>
+            Bulletin delivery is not connected in this client. No email address is collected or stored here.
+          </p>
         </div>
 
         <ul className="dh-footer__bottomLinks">

@@ -1,5 +1,6 @@
 import type { Hydrocarbon, ScenarioPreset, SimulationResult, ZoneThreshold } from '../types/physics';
 import { BLAST_THRESHOLDS, THERMAL_THRESHOLDS } from '../constants/data';
+import { normalizeSimulationInputs } from './security';
 
 /**
  * Calculates the saturation vapor pressure of water at temperature T using Buck's equation
@@ -201,9 +202,21 @@ export function runSimulation(
   ambientTempC = 25,
   humidityPercent = 50
 ): SimulationResult {
-  const yieldFraction = yieldPercent / 100;
-  const rhFraction = humidityPercent / 100;
-  const fillFraction = fillPercent / 100;
+  const inputs = normalizeSimulationInputs(
+    volumeM3,
+    fillPercent,
+    pressureBar,
+    tempC,
+    yieldPercent,
+    ambientTempC,
+    humidityPercent
+  );
+  const yieldFraction = inputs.yieldPercent / 100;
+  const rhFraction = inputs.humidity / 100;
+  const fillFraction = inputs.fillPercent / 100;
+  volumeM3 = inputs.volume;
+  pressureBar = inputs.pressure;
+  tempC = inputs.temp;
   
   const vaporVolume = volumeM3 * (1 - fillFraction);
   const liquidVolume = volumeM3 * fillFraction;

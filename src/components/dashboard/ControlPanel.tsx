@@ -5,6 +5,7 @@ import { HYDROCARBONS, SCENARIOS } from '../../constants/data';
 import { ModelToggle, type ExplosionModel } from './ModelToggle';
 import { KpiBanner } from './KpiBanner';
 import type { SimulationResult } from '../../types/physics';
+import { parseBoundedNumber, SIMULATION_LIMITS } from '../../utils/security';
 
 interface ControlPanelProps {
   selectedRegion: IndianRegion;
@@ -137,56 +138,56 @@ export const ControlPanel: React.FC<ControlPanelProps> = ({
         <label className="ids-label" htmlFor="pressure">
           Storage pressure <span className="ids-range-value">{pressure} bar</span>
         </label>
-        <input id="pressure" type="range" className="ids-range" min={1} max={50} step={0.5} value={pressure} onChange={(e) => setPressure(+e.target.value)} />
+        <input id="pressure" type="range" className="ids-range" min={1} max={50} step={0.5} value={pressure} onChange={(e) => setPressure(parseBoundedNumber(e.target.value, SIMULATION_LIMITS.pressure.min, SIMULATION_LIMITS.pressure.max, pressure))} />
       </div>
 
       <div className="ids-field">
         <label className="ids-label" htmlFor="temp">
           Temperature <span className="ids-range-value">{temp} °C</span>
         </label>
-        <input id="temp" type="range" className="ids-range" min={-40} max={200} step={1} value={temp} onChange={(e) => setTemp(+e.target.value)} />
+        <input id="temp" type="range" className="ids-range" min={-40} max={200} step={1} value={temp} onChange={(e) => setTemp(parseBoundedNumber(e.target.value, SIMULATION_LIMITS.temp.min, SIMULATION_LIMITS.temp.max, temp))} />
       </div>
 
       <div className="ids-field">
         <label className="ids-label" htmlFor="volume">
           Tank capacity <span className="ids-range-value">{volume} m³</span>
         </label>
-        <input id="volume" type="range" className="ids-range" min={10} max={5000} step={10} value={volume} onChange={(e) => setVolume(+e.target.value)} />
+        <input id="volume" type="range" className="ids-range" min={10} max={5000} step={10} value={volume} onChange={(e) => setVolume(parseBoundedNumber(e.target.value, SIMULATION_LIMITS.volume.min, SIMULATION_LIMITS.volume.max, volume))} />
       </div>
 
       <div className="ids-field">
         <label className="ids-label" htmlFor="fill">
           Tank fill <span className="ids-range-value">{fillPercent}%</span>
         </label>
-        <input id="fill" type="range" className="ids-range" min={5} max={100} step={1} value={fillPercent} onChange={(e) => setFillPercent(+e.target.value)} />
+        <input id="fill" type="range" className="ids-range" min={5} max={100} step={1} value={fillPercent} onChange={(e) => setFillPercent(parseBoundedNumber(e.target.value, SIMULATION_LIMITS.fillPercent.min, SIMULATION_LIMITS.fillPercent.max, fillPercent))} />
       </div>
 
       <div className="ids-field">
         <label className="ids-label" htmlFor="ambient">
           Ambient temp <span className="ids-range-value">{ambientTemp} °C</span>
         </label>
-        <input id="ambient" type="range" className="ids-range" min={0} max={50} step={1} value={ambientTemp} onChange={(e) => setAmbientTemp(+e.target.value)} />
+        <input id="ambient" type="range" className="ids-range" min={0} max={50} step={1} value={ambientTemp} onChange={(e) => setAmbientTemp(parseBoundedNumber(e.target.value, SIMULATION_LIMITS.ambientTemp.min, SIMULATION_LIMITS.ambientTemp.max, ambientTemp))} />
       </div>
 
       <div className="ids-field">
         <label className="ids-label" htmlFor="humidity">
           Humidity <span className="ids-range-value">{humidity}%</span>
         </label>
-        <input id="humidity" type="range" className="ids-range" min={10} max={95} step={1} value={humidity} onChange={(e) => setHumidity(+e.target.value)} />
+        <input id="humidity" type="range" className="ids-range" min={10} max={95} step={1} value={humidity} onChange={(e) => setHumidity(parseBoundedNumber(e.target.value, SIMULATION_LIMITS.humidity.min, SIMULATION_LIMITS.humidity.max, humidity))} />
       </div>
 
       <div className="ids-field">
         <label className="ids-label" htmlFor="wind">
           Wind speed <span className="ids-range-value">{windSpeed} km/h</span>
         </label>
-        <input id="wind" type="range" className="ids-range" min={0} max={60} step={1} value={windSpeed} onChange={(e) => setWindSpeed(+e.target.value)} />
+        <input id="wind" type="range" className="ids-range" min={0} max={60} step={1} value={windSpeed} onChange={(e) => setWindSpeed(parseBoundedNumber(e.target.value, SIMULATION_LIMITS.windSpeed.min, SIMULATION_LIMITS.windSpeed.max, windSpeed))} />
       </div>
 
       <div className="ids-field">
         <label className="ids-label" htmlFor="wind-dir">
           Wind direction <span className="ids-range-value">{windDirection}°</span>
         </label>
-        <input id="wind-dir" type="range" className="ids-range" min={0} max={359} step={1} value={windDirection} onChange={(e) => setWindDirection(+e.target.value)} />
+        <input id="wind-dir" type="range" className="ids-range" min={0} max={359} step={1} value={windDirection} onChange={(e) => setWindDirection(parseBoundedNumber(e.target.value, SIMULATION_LIMITS.windDirection.min, SIMULATION_LIMITS.windDirection.max, windDirection))} />
       </div>
 
       <button type="button" className="ids-btn" onClick={onReset} style={{ width: '100%', marginTop: '0.5rem' }}>
