@@ -1,0 +1,53 @@
+/* Threat Zone — Industrial Process Safety Design Tokens */
+
+:root {
+  /* Surfaces */
+  --ids-bg-base: #0f172a;
+  --ids-bg-panel: #1e293b;
+  --ids-bg-elevated: #243044;
+  --ids-bg-input: #0c1220;
+
+  /* Text */
+  --ids-text-primary: #f8fafc;
+  --ids-text-secondary: #94a3b8;
+  --ids-text-muted: #64748b;
+
+  /* Brand & accent */
+  --ids-accent: #f59e0b;
+  --ids-accent-hover: #fbbf24;
+  --ids-accent-muted: rgba(245, 158, 11, 0.15);
+
+  /* Borders */
+  --ids-border: rgba(148, 163, 184, 0.12);
+  --ids-border-strong: rgba(148, 163, 184, 0.22);
+
+  /* Hazard zones (map overlays) */
+  --ids-zone-severe: #ef4444;
+  --ids-zone-severe-fill: rgba(239, 68, 68, 0.5);
+  --ids-zone-medium: #f59e0b;
+  --ids-zone-medium-fill: rgba(245, 158, 11, 0.4);
+  --ids-zone-low: #10b981;
+  --ids-zone-low-fill: rgba(16, 185, 129, 0.3);
+  --ids-zone-safe: #0284c7;
+  --ids-zone-safe-fill: rgba(2, 132, 199, 0.2);
+
+  /* Status */
+  --ids-live: #10b981;
+  --ids-warning: #f59e0b;
+  --ids-critical: #ef4444;
+
+  /* Typography */
+  --ids-font-ui: "Inter", system-ui, -apple-system, sans-serif;
+  --ids-font-mono: "JetBrains Mono", ui-monospace, monospace;
+
+  /* Layout */
+  --ids-topbar-h: 56px;
+  --ids-panel-left-w: 320px;
+  --ids-panel-right-w: 380px;
+  --ids-radius: 4px;
+  --ids-radius-lg: 8px;
+
+  /* Motion */
+  --ids-transition: 180ms cubic-bezier(0.4, 0, 0.2, 1);
+  --ids-ring-transition: 420ms cubic-bezier(0.22, 1, 0.36, 1);
+}

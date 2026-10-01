@@ -1,0 +1,248 @@
+/* ═══════════════════════════════════════════════════════════
+   Threat Zone — Unique animated typography
+   Syne (display) · Instrument Serif (editorial) · Space Mono (data)
+   ═══════════════════════════════════════════════════════════ */
+
+:root {
+  --ca-display: "Syne", system-ui, sans-serif;
+  --ca-sans: "Sora", system-ui, sans-serif;
+  --ca-mono: "Space Mono", "IBM Plex Mono", ui-monospace, monospace;
+}
+
+/* ─── Display & body overrides ──────────────────────────── */
+.ca-title,
+.ca-section-title,
+.map-panel-title,
+.wizard-title {
+  font-family: var(--ca-display) !important;
+  font-weight: 700 !important;
+  letter-spacing: -0.03em !important;
+}
+
+.ca-eyebrow,
+.ca-section-desc,
+.ca-subtitle {
+  font-family: var(--ca-sans);
+}
+
+.ca-kpi-value,
+.ca-list-stat,
+.ca-ticker-item strong {
+  font-family: var(--ca-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ─── Stagger reveal (chars / words) ────────────────────── */
+@keyframes tz-reveal-up {
+  from {
+    opacity: 0;
+    transform: translateY(0.75em) rotateX(12deg);
+    filter: blur(3px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) rotateX(0);
+    filter: blur(0);
+  }
+}
+
+.tz-reveal-char,
+.tz-reveal-word {
+  display: inline-block;
+  opacity: 0;
+  transform-origin: 50% 100%;
+  animation: tz-reveal-up 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.tz-reveal-word {
+  margin-right: 0.28em;
+}
+
+.tz-reveal-char:last-child,
+.tz-reveal-word:last-child {
+  margin-right: 0;
+}
+
+/* ─── Shimmer display headline ────────────────────────────── */
+@keyframes tz-shimmer {
+  0% { background-position: 120% center; }
+  100% { background-position: -120% center; }
+}
+
+.tz-display-shimmer {
+  background: linear-gradient(
+    105deg,
+    var(--ca-fg) 0%,
+    var(--ca-fg) 38%,
+    var(--ca-fg-muted) 48%,
+    var(--ca-fg) 58%,
+    var(--ca-fg) 100%
+  );
+  background-size: 240% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: tz-shimmer 5.5s ease-in-out infinite;
+}
+
+html.dark .tz-display-shimmer {
+  background: linear-gradient(
+    105deg,
+    #f5f5f5 0%,
+    #f5f5f5 38%,
+    #737373 48%,
+    #f5f5f5 58%,
+    #f5f5f5 100%
+  );
+  background-size: 240% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+/* ─── Eyebrow slide-in ──────────────────────────────────── */
+@keyframes tz-eyebrow-in {
+  from {
+    opacity: 0;
+    transform: translateX(-16px);
+    letter-spacing: 0.18em;
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+    letter-spacing: 0.02em;
+  }
+}
+
+.tz-eyebrow-animate {
+  animation: tz-eyebrow-in 1.1s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* ─── Section label scan line ─────────────────────────────── */
+@keyframes tz-label-scan {
+  0% { transform: scaleX(0); opacity: 0.3; transform-origin: left; }
+  45% { transform: scaleX(1); opacity: 1; transform-origin: left; }
+  55% { transform: scaleX(1); opacity: 1; transform-origin: right; }
+  100% { transform: scaleX(0); opacity: 0.3; transform-origin: right; }
+}
+
+.ca-section-label {
+  position: relative;
+  display: inline-block;
+}
+
+.ca-section-label::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -5px;
+  width: 100%;
+  height: 1px;
+  background: var(--ca-fg-subtle);
+  animation: tz-label-scan 3.5s ease-in-out infinite;
+}
+
+/* ─── Nav number pulse ────────────────────────────────────── */
+@keyframes tz-nav-pulse {
+  0%, 100% { opacity: 0.55; transform: translateY(0); }
+  50% { opacity: 1; transform: translateY(-1px); }
+}
+
+.ca-nav-item-active .ca-nav-num {
+  animation: tz-nav-pulse 2.2s ease-in-out infinite;
+  opacity: 1;
+  font-weight: 700;
+}
+
+.ca-nav-item {
+  transition: letter-spacing 0.25s ease, color 0.2s;
+}
+
+.ca-nav-item:hover {
+  letter-spacing: 0.12em;
+}
+
+.ca-nav-item-active {
+  letter-spacing: 0.11em;
+}
+
+/* ─── Animated metrics ────────────────────────────────────── */
+@keyframes tz-metric-pop {
+  0% { transform: scale(0.92); opacity: 0.5; }
+  60% { transform: scale(1.04); opacity: 1; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.tz-metric {
+  display: inline-block;
+  font-variant-numeric: tabular-nums;
+  animation: tz-metric-pop 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ─── LIVE / ticker glow ──────────────────────────────────── */
+@keyframes tz-live-glow {
+  0%, 100% { opacity: 1; text-shadow: none; }
+  50% { opacity: 0.7; text-shadow: 0 0 12px var(--ca-fg-muted); }
+}
+
+.ca-ticker-item strong,
+.map-mode-badge-live {
+  animation: tz-live-glow 2s ease-in-out infinite;
+}
+
+/* ─── Facility card title hover ───────────────────────────── */
+.ca-facility-name {
+  font-family: var(--ca-display);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  transition: letter-spacing 0.3s ease, transform 0.3s ease;
+}
+
+.ca-facility-card:hover .ca-facility-name,
+.ca-facility-card-active .ca-facility-name {
+  letter-spacing: 0.01em;
+}
+
+/* ─── Map tooltip title ───────────────────────────────────── */
+.map-region-tooltip-title {
+  font-family: var(--ca-display) !important;
+  font-weight: 700 !important;
+}
+
+/* ─── Section title entrance (scroll) ─────────────────────── */
+@keyframes tz-section-in {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.tz-section-heading {
+  animation: tz-section-in 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* ─── Reduced motion ──────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .tz-reveal-char,
+  .tz-reveal-word,
+  .tz-display-shimmer,
+  .tz-eyebrow-animate,
+  .ca-section-label::after,
+  .ca-nav-item-active .ca-nav-num,
+  .tz-metric,
+  .ca-ticker-item strong,
+  .map-mode-badge-live,
+  .tz-section-heading {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+    letter-spacing: inherit !important;
+    text-shadow: none !important;
+    background: none !important;
+    -webkit-background-clip: unset !important;
+    background-clip: unset !important;
+    color: inherit !important;
+  }
+
+  .tz-display-shimmer {
+    color: var(--ca-fg) !important;
+  }
+}

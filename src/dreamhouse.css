@@ -1,0 +1,1062 @@
+/* ─── DreamHouse Productions Design System for Threat Zone ─── */
+
+:root {
+  --cb: cubic-bezier(0.22, 1, 0.36, 1);
+  --ts: 0.3s;
+  --dark: #000000;
+  --mid: #888888;
+  --mid-light: #b4b4b4;
+  --light: #ffffff;
+  --primary: #000000;
+  --secondary: #ffffff;
+  --accent-amber: #f59e0b;
+  --accent-red: #ef4444;
+  --border-subtle: rgba(255, 255, 255, 0.12);
+  --border-dim: rgba(255, 255, 255, 0.06);
+  --background: var(--dark);
+  --text: var(--light);
+  --font-editorial: "Syne", "Plus Jakarta Sans", sans-serif;
+  --font-body: "Plus Jakarta Sans", "Inter", -apple-system, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+  --headerHeight: 4.2rem;
+  --hs: 2rem;
+}
+
+@media screen and (min-width: 1024px) {
+  :root {
+    --hs: 3.5rem;
+  }
+}
+
+/* ─── Base Reset ─── */
+html {
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 1.4;
+  background-color: var(--dark);
+  color: var(--light);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--dark);
+  color: var(--light);
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* ─── Custom Inverted Difference Cursor ─── */
+.custom-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 14px;
+  height: 14px;
+  background-color: #ffffff;
+  border-radius: 50%;
+  pointer-events: none;
+  mix-blend-mode: difference;
+  z-index: 99999;
+  transform: translate(-50%, -50%);
+  transition: width 0.25s var(--cb), height 0.25s var(--cb), background-color 0.2s ease, opacity 0.2s ease;
+  opacity: 0;
+}
+
+.custom-cursor.active {
+  opacity: 1;
+}
+
+.custom-cursor.hovering {
+  width: 48px;
+  height: 48px;
+  background-color: #ffffff;
+}
+
+.custom-cursor-follower {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 36px;
+  height: 36px;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 99998;
+  transform: translate(-50%, -50%);
+  transition: width 0.25s var(--cb), height 0.25s var(--cb), border-color 0.2s ease;
+  mix-blend-mode: difference;
+}
+
+/* ─── DreamHouse Fixed Header (.header) ─── */
+.dh-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: var(--headerHeight);
+  background-color: transparent;
+  transition: background-color 0.4s var(--cb), border-color 0.4s var(--cb), backdrop-filter 0.4s var(--cb);
+  z-index: 1000;
+  border-bottom: 1px solid transparent;
+}
+
+.page-scrolled .dh-header {
+  background-color: rgba(0, 0, 0, 0.88);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.dh-header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+  padding: 0 var(--hs);
+  max-width: 1800px;
+  margin: 0 auto;
+}
+
+.dh-header__intro {
+  max-width: 380px;
+  display: none;
+}
+
+@media screen and (min-width: 1024px) {
+  .dh-header__intro {
+    display: block;
+  }
+}
+
+.dh-header__intro p {
+  margin: 0;
+  font-size: 0.72rem;
+  letter-spacing: -0.01em;
+  color: var(--mid);
+  line-height: 1.35;
+  text-transform: uppercase;
+  font-family: var(--font-mono);
+}
+
+.dh-header__logoWrap {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  text-decoration: none;
+  color: var(--light);
+  font-family: var(--font-editorial);
+  font-weight: 700;
+  font-size: 1.15rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+.dh-header__logo-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  padding: 0.15rem 0.45rem;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--border-subtle);
+  color: var(--mid-light);
+  letter-spacing: 0.05em;
+}
+
+.dh-header__live-dot {
+  width: 6px;
+  height: 6px;
+  background-color: #10b981;
+  border-radius: 50%;
+  box-shadow: 0 0 8px #10b981;
+  animation: pulseLive 2s infinite;
+}
+
+@keyframes pulseLive {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.85); }
+}
+
+.dh-header__menuWrap {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.dh-header__menuList {
+  display: none;
+  align-items: center;
+  gap: 1.8rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+@media screen and (min-width: 860px) {
+  .dh-header__menuList {
+    display: flex;
+  }
+}
+
+.dh-header__menuList a,
+.dh-header__menuList button {
+  background: none;
+  border: none;
+  padding: 0;
+  color: var(--mid-light);
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  position: relative;
+  font-family: var(--font-mono);
+  transition: color 0.2s ease;
+}
+
+.dh-header__menuList a:hover,
+.dh-header__menuList button:hover {
+  color: var(--light);
+}
+
+.dh-header__menuList a::after,
+.dh-header__menuList button::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: var(--light);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.3s var(--cb);
+}
+
+.dh-header__menuList a:hover::after,
+.dh-header__menuList button:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.dh-burger-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--border-subtle);
+  color: var(--light);
+  padding: 0.4rem 0.9rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border-radius: 9999px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.dh-burger-btn:hover {
+  background: rgba(255, 255, 255, 0.16);
+  border-color: rgba(255, 255, 255, 0.35);
+}
+
+/* ─── Hero Banner with SVG Cutout Mask (.banner) ─── */
+.dh-banner {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  min-height: 600px;
+  background-color: #000000;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dh-banner__canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+}
+
+.dh-banner__overlay-svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.dh-banner__content {
+  position: absolute;
+  bottom: 3.5rem;
+  left: 0;
+  right: 0;
+  padding: 0 var(--hs);
+  z-index: 3;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  pointer-events: auto;
+}
+
+.dh-banner__telemetry {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.dh-banner__meta-tag {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  color: var(--mid);
+  text-transform: uppercase;
+}
+
+.dh-banner__title-sub {
+  font-family: var(--font-body);
+  font-size: 1.15rem;
+  font-weight: 400;
+  color: var(--mid-light);
+  max-width: 540px;
+  line-height: 1.4;
+  margin: 0;
+}
+
+.dh-banner__actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.dh-btn-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: #ffffff;
+  color: #000000;
+  padding: 0.65rem 1.4rem;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-radius: 9999px;
+  cursor: pointer;
+  border: 1px solid #ffffff;
+  transition: transform 0.25s var(--cb), background-color 0.2s ease, color 0.2s ease;
+}
+
+.dh-btn-pill:hover {
+  transform: translateY(-2px);
+  background-color: transparent;
+  color: #ffffff;
+}
+
+.dh-btn-pill-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: transparent;
+  color: #ffffff;
+  padding: 0.65rem 1.4rem;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-radius: 9999px;
+  cursor: pointer;
+  border: 1px solid var(--border-subtle);
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.dh-btn-pill-ghost:hover {
+  border-color: rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.dh-banner__scroll-indicator {
+  position: absolute;
+  bottom: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.2em;
+  color: var(--mid);
+  text-transform: uppercase;
+  z-index: 3;
+  animation: bounceDown 2s infinite ease-in-out;
+  cursor: pointer;
+}
+
+@keyframes bounceDown {
+  0%, 100% { transform: translate(-50%, 0); }
+  50% { transform: translate(-50%, 6px); }
+}
+
+/* ─── Drawer Menu Overlay (.portfolioMenu) ─── */
+.dh-portfolioMenu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: #000000;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s var(--cb);
+  overflow-y: auto;
+}
+
+.dh-portfolioMenu.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.dh-portfolioMenu__header {
+  height: var(--headerHeight);
+  padding: 0 var(--hs);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.dh-portfolioMenu__inner {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 3rem var(--hs);
+  max-width: 1800px;
+  margin: 0 auto;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+@media screen and (min-width: 960px) {
+  .dh-portfolioMenu__inner {
+    flex-direction: row;
+    gap: 4rem;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.dh-portfolioMenu__listWrap {
+  flex: 1;
+}
+
+.dh-portfolioMenu__listTitle {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.16em;
+  color: var(--mid);
+  text-transform: uppercase;
+  margin-bottom: 2rem;
+}
+
+.dh-portfolioMenu__talentList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.dh-portfolioMenu__talent {
+  position: relative;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  cursor: pointer;
+  padding: 0.3rem 0;
+  border-bottom: 1px solid var(--border-dim);
+  transition: border-color 0.2s ease;
+}
+
+.dh-portfolioMenu__talent:hover {
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.dh-portfolioMenu__talent__link {
+  font-family: var(--font-editorial);
+  font-size: clamp(1.4rem, 2.5vw, 2.2rem);
+  font-weight: 500;
+  color: var(--mid);
+  text-decoration: none;
+  transition: color 0.2s ease, transform 0.2s ease;
+  display: inline-block;
+}
+
+.dh-portfolioMenu__talent.active .dh-portfolioMenu__talent__link,
+.dh-portfolioMenu__talent:hover .dh-portfolioMenu__talent__link {
+  color: #ffffff;
+  transform: translateX(8px);
+}
+
+.dh-portfolioMenu__talent__meta {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--mid);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.dh-portfolioMenu__previewWrap {
+  width: 100%;
+  max-width: 480px;
+  aspect-ratio: 16/10;
+  position: relative;
+  border-radius: 4px;
+  overflow: hidden;
+  border: 1px solid var(--border-subtle);
+  background-color: #0d0d0d;
+  display: none;
+}
+
+@media screen and (min-width: 960px) {
+  .dh-portfolioMenu__previewWrap {
+    display: block;
+  }
+}
+
+.dh-portfolioMenu__previewImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s var(--cb), opacity 0.4s ease;
+}
+
+.dh-portfolioMenu__previewInfo {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 1.2rem;
+  background: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.9) 100%);
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+/* ─── Pinned Project Section Links (.fullScreenProjectLink.sectionPin) ─── */
+.dh-showcase {
+  position: relative;
+  width: 100%;
+  background-color: var(--dark);
+}
+
+.dh-sectionPin {
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  box-sizing: border-box;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.dh-projectLink__wrap {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  min-height: 640px;
+  display: flex;
+  align-items: flex-end;
+  padding: var(--hs);
+  box-sizing: border-box;
+}
+
+.dh-projectLink__mediaWrap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.dh-projectLink__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.65) contrast(1.1);
+  transform: scale(1.02);
+  transition: transform 1.2s var(--cb), filter 0.6s ease;
+}
+
+.dh-sectionPin:hover .dh-projectLink__image {
+  transform: scale(1.06);
+  filter: brightness(0.75) contrast(1.15);
+}
+
+.dh-projectLink__overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.2) 50%, rgba(0, 0, 0, 0.95) 100%);
+}
+
+.dh-projectLink__topBar {
+  position: absolute;
+  top: 5rem;
+  left: var(--hs);
+  right: var(--hs);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 2;
+}
+
+.dh-projectLink__badge {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--light);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(12px);
+  padding: 0.35rem 0.8rem;
+  border-radius: 9999px;
+  border: 1px solid var(--border-subtle);
+}
+
+.dh-projectLink__telemetry-grid {
+  display: none;
+  gap: 1.5rem;
+}
+
+@media screen and (min-width: 768px) {
+  .dh-projectLink__telemetry-grid {
+    display: flex;
+  }
+}
+
+.dh-projectLink__telemetry-item {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--mid-light);
+  text-transform: uppercase;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(8px);
+  padding: 0.25rem 0.65rem;
+  border-radius: 4px;
+  border: 1px solid var(--border-dim);
+}
+
+.dh-projectLink__telemetry-item strong {
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.dh-projectLink__content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 1400px;
+  margin-bottom: 2rem;
+}
+
+.dh-projectLink__index {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  letter-spacing: 0.15em;
+  color: var(--mid);
+  text-transform: uppercase;
+  margin-bottom: 0.6rem;
+}
+
+.dh-projectLink__title {
+  font-family: var(--font-editorial);
+  font-size: clamp(2rem, 4.5vw, 4.2rem);
+  font-weight: 600;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  margin: 0 0 1rem;
+  color: #ffffff;
+  text-transform: uppercase;
+}
+
+.dh-projectLink__desc {
+  font-family: var(--font-body);
+  font-size: clamp(0.95rem, 1.2vw, 1.15rem);
+  color: var(--mid-light);
+  max-width: 680px;
+  line-height: 1.5;
+  margin: 0 0 1.8rem;
+}
+
+.dh-projectLink__actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+/* ─── Detail Modal (.psModal) ─── */
+.dh-modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(16px);
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--hs);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.dh-modalOverlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.dh-modal {
+  width: 100%;
+  max-width: 1100px;
+  max-height: 90vh;
+  background-color: #0b0b0b;
+  border: 1px solid var(--border-subtle);
+  border-radius: 8px;
+  overflow-y: auto;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.9);
+}
+
+@media screen and (min-width: 860px) {
+  .dh-modal {
+    flex-direction: row;
+    max-height: 80vh;
+  }
+}
+
+.dh-modal__closeBtn {
+  position: absolute;
+  top: 1.2rem;
+  right: 1.2rem;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid var(--border-subtle);
+  color: #ffffff;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  transition: background-color 0.2s ease;
+}
+
+.dh-modal__closeBtn:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.dh-modal__imageCol {
+  flex: 1;
+  min-height: 280px;
+  position: relative;
+  background: #000;
+}
+
+.dh-modal__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.dh-modal__infoCol {
+  flex: 1.2;
+  padding: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+  overflow-y: auto;
+}
+
+.dh-modal__headerTag {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--accent-amber);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.dh-modal__title {
+  font-family: var(--font-editorial);
+  font-size: 2rem;
+  font-weight: 600;
+  margin: 0;
+  line-height: 1.15;
+}
+
+.dh-modal__text {
+  font-size: 0.95rem;
+  color: var(--mid-light);
+  line-height: 1.5;
+  margin: 0;
+}
+
+.dh-modal__table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  margin-top: 0.5rem;
+}
+
+.dh-modal__table th,
+.dh-modal__table td {
+  padding: 0.6rem 0.5rem;
+  border-bottom: 1px solid var(--border-dim);
+  text-align: left;
+}
+
+.dh-modal__table th {
+  color: var(--mid);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.dh-modal__table td {
+  color: #ffffff;
+}
+
+/* ─── DreamHouse Editorial Footer (.footer) ─── */
+.dh-footer {
+  background-color: #000000;
+  padding: 6rem var(--hs) 3rem;
+  border-top: 1px solid var(--border-subtle);
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+  box-sizing: border-box;
+}
+
+.dh-footer__top {
+  max-width: 900px;
+}
+
+.dh-footer__headline {
+  font-family: var(--font-editorial);
+  font-size: clamp(2rem, 4vw, 3.8rem);
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin: 0 0 1.5rem;
+  color: #ffffff;
+}
+
+.dh-footer__lead {
+  font-family: var(--font-body);
+  font-size: 1.1rem;
+  color: var(--mid);
+  line-height: 1.5;
+  margin: 0;
+}
+
+.dh-footer__operationalGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 2rem;
+  padding: 2.5rem 0;
+  border-top: 1px solid var(--border-dim);
+  border-bottom: 1px solid var(--border-dim);
+}
+
+.dh-footer__cityItem {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.dh-footer__cityTitle {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  color: var(--mid);
+  text-transform: uppercase;
+}
+
+.dh-footer__cityTime {
+  font-family: var(--font-editorial);
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.dh-footer__cityFacility {
+  font-size: 0.78rem;
+  color: var(--mid);
+}
+
+.dh-footer__bottom {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+@media screen and (min-width: 960px) {
+  .dh-footer__bottom {
+    flex-direction: row;
+    align-items: flex-end;
+  }
+}
+
+.dh-footer__subscribeWrap {
+  max-width: 420px;
+  width: 100%;
+}
+
+.dh-footer__subscribeLabel {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  color: var(--mid);
+  text-transform: uppercase;
+  margin-bottom: 0.8rem;
+  display: block;
+}
+
+.dh-footer__subscribeForm {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #ffffff;
+  padding-bottom: 0.4rem;
+}
+
+.dh-footer__input {
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #ffffff;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  flex: 1;
+}
+
+.dh-footer__input::placeholder {
+  color: var(--mid);
+}
+
+.dh-footer__submitBtn {
+  background: transparent;
+  border: none;
+  color: #ffffff;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  cursor: pointer;
+  padding: 0 0.5rem;
+}
+
+.dh-footer__bottomLinks {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  flex-wrap: wrap;
+}
+
+.dh-footer__bottomLinks a {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  color: var(--mid);
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: color 0.2s ease;
+}
+
+.dh-footer__bottomLinks a:hover {
+  color: #ffffff;
+}
+
+.dh-footer__copy {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--mid);
+  text-transform: uppercase;
+}
+
+/* ─── Simulator Embed in DreamHouse Style ─── */
+.dh-simulator-section {
+  padding: 6rem var(--hs);
+  background-color: #050505;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.dh-simulator-header {
+  max-width: 1400px;
+  margin: 0 auto 3rem;
+}
+
+.dh-simulator-num {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.16em;
+  color: var(--mid);
+  text-transform: uppercase;
+  margin-bottom: 0.8rem;
+}
+
+.dh-simulator-title {
+  font-family: var(--font-editorial);
+  font-size: clamp(2rem, 3.5vw, 3rem);
+  font-weight: 600;
+  margin: 0 0 1rem;
+  color: #ffffff;
+}
+
+.dh-simulator-lead {
+  font-size: 1.05rem;
+  color: var(--mid-light);
+  max-width: 680px;
+  line-height: 1.5;
+  margin: 0;
+}

@@ -1,0 +1,549 @@
+/* Threat Zone — Industrial UI Components */
+
+.ids-app {
+  min-height: 100vh;
+  background: var(--ids-bg-base);
+  color: var(--ids-text-primary);
+  font-family: var(--ids-font-ui);
+  display: flex;
+  flex-direction: column;
+}
+
+/* ─── Top bar ─────────────────────────────────────────────── */
+.ids-topbar {
+  height: var(--ids-topbar-h);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1rem;
+  border-bottom: 1px solid var(--ids-border);
+  background: var(--ids-bg-panel);
+  flex-shrink: 0;
+  gap: 1rem;
+}
+
+.ids-topbar-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.ids-topbar-logo {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--ids-accent-muted);
+  border: 1px solid var(--ids-accent);
+  color: var(--ids-accent);
+  font-family: var(--ids-font-mono);
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.ids-topbar-title {
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+
+.ids-topbar-tagline {
+  font-family: var(--ids-font-mono);
+  font-size: 9px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ids-text-muted);
+  margin: 0;
+}
+
+.ids-topbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* ─── 3-panel dashboard ───────────────────────────────────── */
+.ids-dashboard {
+  flex: 1;
+  display: grid;
+  grid-template-columns: var(--ids-panel-left-w) 1fr var(--ids-panel-right-w);
+  min-height: calc(100vh - var(--ids-topbar-h));
+  overflow: hidden;
+}
+
+.ids-panel {
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid var(--ids-border);
+}
+
+.ids-panel:last-child {
+  border-right: none;
+  border-left: 1px solid var(--ids-border);
+}
+
+.ids-panel-center {
+  border-right: none;
+  position: relative;
+  background: var(--ids-bg-base);
+}
+
+.ids-panel-header {
+  padding: 0.85rem 1rem;
+  border-bottom: 1px solid var(--ids-border);
+  background: var(--ids-bg-panel);
+  flex-shrink: 0;
+}
+
+.ids-panel-title {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ids-text-secondary);
+  margin: 0;
+}
+
+.ids-panel-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 1rem;
+}
+
+.ids-panel-body-flush {
+  padding: 0;
+  overflow: hidden;
+}
+
+/* ─── Buttons ─────────────────────────────────────────────── */
+.ids-btn {
+  font-family: var(--ids-font-mono);
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 0.5rem 0.85rem;
+  border: 1px solid var(--ids-border-strong);
+  background: var(--ids-bg-elevated);
+  color: var(--ids-text-primary);
+  cursor: pointer;
+  transition: var(--ids-transition);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.ids-btn:hover {
+  border-color: var(--ids-accent);
+  color: var(--ids-accent);
+}
+
+.ids-btn-accent {
+  background: var(--ids-accent);
+  border-color: var(--ids-accent);
+  color: #0f172a;
+  font-weight: 600;
+}
+
+.ids-btn-accent:hover {
+  background: var(--ids-accent-hover);
+  border-color: var(--ids-accent-hover);
+  color: #0f172a;
+}
+
+.ids-btn-icon {
+  width: 34px;
+  height: 34px;
+  padding: 0;
+  justify-content: center;
+}
+
+/* ─── Segmented control (VCE / BLEVE) ─────────────────────── */
+.ids-segment {
+  display: flex;
+  border: 1px solid var(--ids-border-strong);
+  background: var(--ids-bg-input);
+  padding: 2px;
+  gap: 2px;
+}
+
+.ids-segment-btn {
+  flex: 1;
+  font-family: var(--ids-font-mono);
+  font-size: 9px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.55rem 0.5rem;
+  border: none;
+  background: transparent;
+  color: var(--ids-text-muted);
+  cursor: pointer;
+  transition: var(--ids-transition);
+}
+
+.ids-segment-btn-active {
+  background: var(--ids-accent);
+  color: #0f172a;
+  font-weight: 600;
+}
+
+/* ─── Form controls ───────────────────────────────────────── */
+.ids-field {
+  margin-bottom: 1rem;
+}
+
+.ids-label {
+  display: block;
+  font-family: var(--ids-font-mono);
+  font-size: 9px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ids-text-muted);
+  margin-bottom: 0.35rem;
+}
+
+.ids-select,
+.ids-input {
+  width: 100%;
+  font-family: var(--ids-font-mono);
+  font-size: 12px;
+  padding: 0.55rem 0.65rem;
+  background: var(--ids-bg-input);
+  border: 1px solid var(--ids-border-strong);
+  color: var(--ids-text-primary);
+  border-radius: var(--ids-radius);
+}
+
+.ids-select:focus,
+.ids-input:focus {
+  outline: none;
+  border-color: var(--ids-accent);
+  box-shadow: 0 0 0 2px var(--ids-accent-muted);
+}
+
+.ids-range {
+  width: 100%;
+  accent-color: var(--ids-accent);
+}
+
+.ids-range-value {
+  font-family: var(--ids-font-mono);
+  font-size: 11px;
+  color: var(--ids-accent);
+  float: right;
+}
+
+/* ─── KPI banner ──────────────────────────────────────────── */
+.ids-kpi-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  background: var(--ids-border);
+  border: 1px solid var(--ids-border);
+  margin-top: 1rem;
+}
+
+.ids-kpi {
+  background: var(--ids-bg-elevated);
+  padding: 0.75rem;
+}
+
+.ids-kpi-label {
+  font-family: var(--ids-font-mono);
+  font-size: 8px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ids-text-muted);
+  display: block;
+}
+
+.ids-kpi-value {
+  font-family: var(--ids-font-mono);
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--ids-text-primary);
+  font-variant-numeric: tabular-nums;
+}
+
+.ids-kpi-value-accent {
+  color: var(--ids-accent);
+}
+
+.ids-kpi-unit {
+  font-size: 0.65rem;
+  color: var(--ids-text-secondary);
+  font-weight: 400;
+}
+
+/* ─── Map layer controls ──────────────────────────────────── */
+.ids-map-toolbar {
+  position: absolute;
+  top: 0.75rem;
+  left: 0.75rem;
+  right: 0.75rem;
+  z-index: 400;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: center;
+  justify-content: space-between;
+  pointer-events: none;
+}
+
+.ids-map-toolbar > * {
+  pointer-events: auto;
+}
+
+.ids-layer-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.ids-layer-chip {
+  font-family: var(--ids-font-mono);
+  font-size: 9px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 0.35rem 0.6rem;
+  border: 1px solid var(--ids-border-strong);
+  background: rgba(15, 23, 42, 0.85);
+  backdrop-filter: blur(8px);
+  color: var(--ids-text-secondary);
+  cursor: pointer;
+  transition: var(--ids-transition);
+}
+
+.ids-layer-chip-active {
+  border-color: var(--ids-accent);
+  color: var(--ids-accent);
+  background: rgba(245, 158, 11, 0.12);
+}
+
+.ids-wind-compass {
+  width: 48px;
+  height: 48px;
+  border: 1px solid var(--ids-border-strong);
+  border-radius: 50%;
+  background: rgba(15, 23, 42, 0.85);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.ids-wind-arrow {
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-bottom: 14px solid var(--ids-accent);
+  transform-origin: center 70%;
+  transition: transform var(--ids-transition);
+}
+
+/* ─── Analytics tabs ──────────────────────────────────────── */
+.ids-tabs {
+  display: flex;
+  border-bottom: 1px solid var(--ids-border);
+  background: var(--ids-bg-panel);
+}
+
+.ids-tab {
+  flex: 1;
+  font-family: var(--ids-font-mono);
+  font-size: 9px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.75rem 0.5rem;
+  border: none;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+  background: transparent;
+  color: var(--ids-text-muted);
+  cursor: pointer;
+}
+
+.ids-tab-active {
+  color: var(--ids-accent);
+  border-bottom-color: var(--ids-accent);
+}
+
+/* ─── Alert cards (safety guide) ──────────────────────────── */
+.ids-alert {
+  border: 1px solid var(--ids-border);
+  border-left: 3px solid var(--ids-accent);
+  background: var(--ids-bg-elevated);
+  padding: 0.85rem 1rem;
+  margin-bottom: 0.75rem;
+}
+
+.ids-alert-critical {
+  border-left-color: var(--ids-critical);
+}
+
+.ids-alert-title {
+  font-size: 0.8rem;
+  font-weight: 600;
+  margin: 0 0 0.35rem;
+}
+
+.ids-alert-body {
+  font-size: 0.78rem;
+  line-height: 1.55;
+  color: var(--ids-text-secondary);
+  margin: 0;
+}
+
+/* ─── Live indicator ──────────────────────────────────────── */
+.ids-live-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-family: var(--ids-font-mono);
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ids-live);
+}
+
+.ids-live-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--ids-live);
+  animation: ids-pulse 2s ease-in-out infinite;
+}
+
+@keyframes ids-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.35; }
+}
+
+/* ─── Zone ring animation ─────────────────────────────────── */
+.zone-circle {
+  transition: opacity var(--ids-ring-transition), stroke-width var(--ids-ring-transition);
+}
+
+/* ─── Mobile / tablet ─────────────────────────────────────── */
+.ids-mobile-tabs {
+  display: none;
+}
+
+@media (max-width: 1200px) {
+  .ids-dashboard {
+    grid-template-columns: 280px 1fr 340px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .ids-dashboard {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto  min(55vh, 480px) auto;
+    overflow-y: auto;
+  }
+
+  .ids-panel-left,
+  .ids-panel-right {
+    border-right: none;
+    border-left: none;
+    border-bottom: 1px solid var(--ids-border);
+    max-height: none;
+  }
+
+  .ids-panel-center {
+    order: -1;
+    min-height: min(55vh, 480px);
+  }
+
+  .ids-mobile-tabs {
+    display: flex;
+    border-bottom: 1px solid var(--ids-border);
+    background: var(--ids-bg-panel);
+  }
+
+  .ids-mobile-tabs .ids-tab {
+    flex: 1;
+  }
+
+  .ids-panel-hidden-mobile {
+    display: none;
+  }
+}
+
+.map-panel-embedded {
+  height: 100%;
+  min-height: 100%;
+  border: none !important;
+  background: var(--ids-bg-base) !important;
+}
+
+.map-panel-embedded .map-scene-flat,
+.map-panel-embedded .map-flat-viewport {
+  height: 100%;
+  min-height: 100%;
+}
+
+.map-flat-viewport {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+html.ids-theme {
+  background: var(--ids-bg-base);
+  color: var(--ids-text-primary);
+}
+
+html.ids-theme body {
+  background: var(--ids-bg-base);
+}
+
+/* ─── Map cursor HUD ──────────────────────────────────────── */
+.ids-map-hud {
+  position: absolute;
+  bottom: 0.75rem;
+  left: 0.75rem;
+  z-index: 450;
+  min-width: 220px;
+  max-width: 320px;
+  padding: 0.65rem 0.75rem;
+  background: rgba(15, 23, 42, 0.92);
+  border: 1px solid var(--ids-border-strong);
+  backdrop-filter: blur(10px);
+  pointer-events: none;
+  font-family: var(--ids-font-mono);
+}
+
+.ids-map-hud-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.75rem;
+  font-size: 10px;
+  line-height: 1.5;
+}
+
+.ids-map-hud-label {
+  color: var(--ids-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.ids-map-hud-value {
+  color: var(--ids-text-primary);
+  font-weight: 600;
+  text-align: right;
+}
+
+.ids-map-hud-impact {
+  margin: 0.45rem 0 0;
+  padding-top: 0.45rem;
+  border-top: 1px solid var(--ids-border);
+  font-family: var(--ids-font-ui);
+  font-size: 11px;
+  line-height: 1.45;
+  color: var(--ids-accent);
+}
