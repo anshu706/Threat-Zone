@@ -1,0 +1,1 @@
+Introducing Threat Zone: real-time VCE & BLEVE consequence modeling for Indian refineries with physics-driven blast zones on satellite maps. Built for process safety engineers, emergency responders, and operations teams.

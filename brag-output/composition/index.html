@@ -1,0 +1,1175 @@
+<!doctype html>
+<html lang="en" data-resolution="landscape">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1920, height=1080" />
+    <title>Threat Zone — Launch Brag</title>
+    <!-- Preload fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;700;800&family=Syne:wght@700;800&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <style>
+      :root {
+        --ids-bg-base: #0f172a;
+        --ids-bg-panel: #1e293b;
+        --ids-bg-elevated: #243044;
+        --ids-bg-input: #0c1220;
+        --ids-text-primary: #ffffff;
+        --ids-text-secondary: #cbd5e1;
+        --ids-text-muted: #94a3b8;
+        --ids-accent: #f59e0b;
+        --ids-accent-hover: #fbbf24;
+        --ids-border: rgba(148, 163, 184, 0.2);
+        --ids-border-strong: rgba(148, 163, 184, 0.35);
+        --ids-zone-severe: #ef4444;
+        --ids-zone-medium: #f59e0b;
+        --ids-zone-low: #10b981;
+        --ids-zone-safe: #0284c7;
+        --ids-live: #10b981;
+        --font-ui: "Inter", sans-serif;
+        --font-mono: "JetBrains Mono", monospace;
+        --font-display: "Syne", sans-serif;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        margin: 0;
+        width: 1920px;
+        height: 1080px;
+        overflow: hidden;
+        background: #080c14;
+        font-family: var(--font-ui);
+        color: var(--ids-text-primary);
+        -webkit-font-smoothing: antialiased;
+      }
+
+      #root {
+        position: relative;
+        width: 1920px;
+        height: 1080px;
+        overflow: hidden;
+        background: radial-gradient(circle at 50% 45%, #131c31 0%, #090e17 100%);
+      }
+
+      .clip {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 1920px;
+        height: 1080px;
+        pointer-events: none;
+      }
+
+      /* =========================================================
+         SCENE 1: KINETIC SHOCKWAVE CUTOUT HOOK (0s - 3.8s)
+         ========================================================= */
+      #scene-1 {
+        background: #040404;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 10;
+      }
+
+      .s1-canvas-wrap {
+        position: absolute;
+        inset: 0;
+        overflow: hidden;
+      }
+
+      .shock-ring {
+        position: absolute;
+        top: 42%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        border-radius: 50%;
+        pointer-events: none;
+      }
+
+      .s1-overlay-svg {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+      }
+
+      .s1-hud-badge {
+        position: absolute;
+        bottom: 120px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        background: rgba(15, 23, 42, 0.95);
+        border: 1px solid rgba(245, 158, 11, 0.6);
+        padding: 12px 28px;
+        border-radius: 9999px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+      }
+
+      .live-dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: var(--ids-zone-severe);
+        box-shadow: 0 0 12px var(--ids-zone-severe);
+      }
+
+      .s1-hud-text {
+        font-family: var(--font-mono);
+        font-size: 14px;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: #fbbf24;
+        font-weight: 700;
+      }
+
+      /* =========================================================
+         SCENE 2 & 3 & 4: DASHBOARD COMMAND CENTER (3.8s - 17.5s)
+         ========================================================= */
+      #dashboard-shell {
+        position: absolute;
+        inset: 0;
+        background: var(--ids-bg-base);
+        display: flex;
+        flex-direction: column;
+        z-index: 20;
+      }
+
+      /* Top Navigation Bar */
+      .topbar {
+        height: 64px;
+        background: #0d1527;
+        border-bottom: 1px solid var(--ids-border);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 32px;
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+      }
+
+      .brand-badge {
+        background: var(--ids-accent);
+        color: #0b0f19;
+        font-family: var(--font-display);
+        font-size: 16px;
+        font-weight: 800;
+        padding: 4px 10px;
+        border-radius: 4px;
+        letter-spacing: 0.05em;
+      }
+
+      .brand-title {
+        font-family: var(--font-display);
+        font-size: 20px;
+        font-weight: 700;
+        letter-spacing: 0.02em;
+        color: #ffffff;
+      }
+
+      .brand-tagline {
+        font-size: 13px;
+        color: #cbd5e1;
+        border-left: 1px solid var(--ids-border);
+        padding-left: 14px;
+        margin-left: 4px;
+      }
+
+      .status-pill {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        background: rgba(16, 185, 129, 0.15);
+        border: 1px solid rgba(16, 185, 129, 0.4);
+        padding: 6px 14px;
+        border-radius: 9999px;
+        font-family: var(--font-mono);
+        font-size: 12px;
+        color: #34d399;
+        font-weight: 600;
+      }
+
+      .status-dot-green {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: #10b981;
+        box-shadow: 0 0 8px #10b981;
+      }
+
+      .top-tools {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .top-btn {
+        background: var(--ids-bg-elevated);
+        border: 1px solid var(--ids-border);
+        color: #ffffff;
+        font-size: 12px;
+        font-weight: 600;
+        padding: 6px 16px;
+        border-radius: 4px;
+      }
+
+      /* 3-Panel Main Layout */
+      .main-grid {
+        flex: 1;
+        display: grid;
+        grid-template-columns: 420px 1fr 440px;
+        overflow: hidden;
+      }
+
+      /* LEFT CONTROL PANEL */
+      .panel-left {
+        background: var(--ids-bg-panel);
+        border-right: 1px solid var(--ids-border);
+        padding: 24px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      .panel-heading {
+        font-family: var(--font-mono);
+        font-size: 12px;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        color: #e2e8f0;
+        font-weight: 700;
+      }
+
+      .field-group {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+      }
+
+      .field-label {
+        font-size: 13px;
+        font-weight: 600;
+        color: #e2e8f0;
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .field-value-mono {
+        font-family: var(--font-mono);
+        color: #fbbf24;
+        font-weight: 700;
+      }
+
+      .select-box {
+        background: var(--ids-bg-input);
+        border: 1px solid var(--ids-border-strong);
+        border-radius: 6px;
+        padding: 10px 14px;
+        font-size: 13px;
+        color: #ffffff;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .segment-toggle {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        background: var(--ids-bg-input);
+        padding: 4px;
+        border-radius: 6px;
+        border: 1px solid var(--ids-border);
+      }
+
+      .segment-btn {
+        padding: 8px 0;
+        text-align: center;
+        font-size: 12px;
+        font-weight: 700;
+        border-radius: 4px;
+        color: #cbd5e1;
+      }
+
+      .segment-btn.active {
+        background: var(--ids-accent);
+        color: #0f172a;
+        box-shadow: 0 2px 8px rgba(245, 158, 11, 0.4);
+      }
+
+      .slider-track {
+        height: 6px;
+        background: #090f1d;
+        border-radius: 3px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .slider-fill {
+        height: 100%;
+        background: linear-gradient(90deg, #f59e0b, #fbbf24);
+        width: 60%;
+        border-radius: 3px;
+      }
+
+      /* KPI BANNER */
+      .kpi-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+        margin-top: 10px;
+      }
+
+      .kpi-card {
+        background: var(--ids-bg-elevated);
+        border: 1px solid var(--ids-border);
+        border-radius: 6px;
+        padding: 12px 14px;
+      }
+
+      .kpi-title {
+        font-size: 12px;
+        color: #e2e8f0;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        margin-bottom: 4px;
+        font-weight: 600;
+      }
+
+      .kpi-num {
+        font-family: var(--font-mono);
+        font-size: 20px;
+        font-weight: 700;
+        color: #ffffff;
+      }
+
+      .kpi-num.accent {
+        color: #fbbf24;
+      }
+
+      .kpi-unit {
+        font-size: 12px;
+        font-weight: 600;
+        color: #cbd5e1;
+      }
+
+      /* CENTER MAP CANVAS */
+      .map-canvas-container {
+        position: relative;
+        overflow: hidden;
+        background: #070d18;
+      }
+
+      /* Satellite Graphic Background */
+      .sat-imagery {
+        position: absolute;
+        inset: 0;
+        background-color: #0b1220;
+        background-image: 
+          radial-gradient(circle at 50% 50%, rgba(20, 35, 60, 0.8) 0%, rgba(5, 10, 20, 0.95) 100%),
+          linear-gradient(rgba(148, 163, 184, 0.08) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(148, 163, 184, 0.08) 1px, transparent 1px);
+        background-size: 100% 100%, 40px 40px, 40px 40px;
+      }
+
+      /* Refinery schematic overlay shapes */
+      .refinery-grid {
+        position: absolute;
+        inset: 0;
+      }
+
+      /* Epicenter Reticle */
+      .epicenter {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 16px;
+        height: 16px;
+        background: #ffffff;
+        border-radius: 50%;
+        box-shadow: 0 0 16px #ffffff, 0 0 32px #ef4444;
+        z-index: 10;
+      }
+
+      .crosshair-h {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        right: 0;
+        height: 1px;
+        background: rgba(245, 158, 11, 0.25);
+        pointer-events: none;
+      }
+
+      .crosshair-v {
+        position: absolute;
+        left: 50%;
+        top: 0;
+        bottom: 0;
+        width: 1px;
+        background: rgba(245, 158, 11, 0.25);
+        pointer-events: none;
+      }
+
+      /* Consequence Hazard Rings */
+      .hazard-ring {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        border-radius: 50%;
+        pointer-events: none;
+      }
+
+      #ring-z1 {
+        width: 180px;
+        height: 180px;
+        border: 2px solid var(--ids-zone-severe);
+        background: rgba(239, 68, 68, 0.25);
+        box-shadow: 0 0 24px rgba(239, 68, 68, 0.4);
+      }
+
+      #ring-z2 {
+        width: 340px;
+        height: 340px;
+        border: 2px solid var(--ids-zone-medium);
+        background: rgba(245, 158, 11, 0.15);
+        box-shadow: 0 0 20px rgba(245, 158, 11, 0.2);
+      }
+
+      #ring-z3 {
+        width: 520px;
+        height: 520px;
+        border: 1.5px solid var(--ids-zone-low);
+        background: rgba(16, 185, 129, 0.1);
+      }
+
+      #ring-z4 {
+        width: 720px;
+        height: 720px;
+        border: 1.5px dashed var(--ids-zone-safe);
+        background: rgba(2, 132, 199, 0.05);
+      }
+
+      /* Map Layer Chips */
+      .map-top-bar {
+        position: absolute;
+        top: 20px;
+        left: 24px;
+        display: flex;
+        gap: 10px;
+        z-index: 15;
+      }
+
+      .layer-chip {
+        background: rgba(15, 23, 42, 0.95);
+        border: 1px solid var(--ids-border-strong);
+        color: #e2e8f0;
+        padding: 6px 14px;
+        border-radius: 20px;
+        font-size: 12px;
+        font-weight: 600;
+        backdrop-filter: blur(8px);
+      }
+
+      .layer-chip.active {
+        border-color: var(--ids-accent);
+        color: #ffffff;
+        background: rgba(245, 158, 11, 0.2);
+      }
+
+      /* Wind Compass Widget */
+      .wind-compass-widget {
+        position: absolute;
+        top: 20px;
+        right: 24px;
+        background: rgba(15, 23, 42, 0.95);
+        border: 1px solid var(--ids-border-strong);
+        border-radius: 8px;
+        padding: 10px 16px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        backdrop-filter: blur(8px);
+        z-index: 15;
+      }
+
+      .compass-arrow {
+        width: 24px;
+        height: 24px;
+        transform: rotate(240deg);
+        color: #fbbf24;
+      }
+
+      /* RIGHT ANALYTICS PANEL */
+      .panel-right {
+        background: var(--ids-bg-panel);
+        border-left: 1px solid var(--ids-border);
+        padding: 24px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      .chart-container {
+        background: var(--ids-bg-input);
+        border: 1px solid var(--ids-border);
+        border-radius: 8px;
+        padding: 16px;
+        height: 260px;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .chart-title {
+        font-size: 13px;
+        font-weight: 600;
+        margin-bottom: 8px;
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .chart-svg {
+        width: 100%;
+        height: 190px;
+      }
+
+      .curve-path {
+        stroke-dasharray: 1000;
+        stroke-dashoffset: 1000;
+      }
+
+      .advisory-card {
+        background: rgba(239, 68, 68, 0.12);
+        border: 1px solid rgba(239, 68, 68, 0.4);
+        border-left: 4px solid var(--ids-zone-severe);
+        border-radius: 6px;
+        padding: 14px 16px;
+      }
+
+      .advisory-header {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        color: #fca5a5;
+        font-size: 13px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        margin-bottom: 6px;
+      }
+
+      .advisory-body {
+        font-size: 13px;
+        color: #ffffff;
+        line-height: 1.5;
+      }
+
+      /* =========================================================
+         SCENE 5: OUTRO & AUTHORITY EMBLEM (17.5s - 19.5s)
+         ========================================================= */
+      #scene-5 {
+        background: #070c17;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        z-index: 30;
+      }
+
+      .outro-shield {
+        width: 80px;
+        height: 80px;
+        margin-bottom: 24px;
+        color: var(--ids-accent);
+      }
+
+      .outro-title {
+        font-family: var(--font-display);
+        font-size: 68px;
+        font-weight: 800;
+        letter-spacing: 0.04em;
+        margin-bottom: 12px;
+        background: linear-gradient(180deg, #ffffff 0%, #cbd5e1 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      .outro-subtitle {
+        font-size: 20px;
+        color: #e2e8f0;
+        margin-bottom: 32px;
+        max-width: 720px;
+        text-align: center;
+      }
+
+      .outro-badge {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        background: rgba(16, 185, 129, 0.15);
+        border: 1px solid rgba(16, 185, 129, 0.5);
+        padding: 8px 24px;
+        border-radius: 9999px;
+        font-family: var(--font-mono);
+        font-size: 14px;
+        color: #34d399;
+        font-weight: 600;
+        letter-spacing: 0.1em;
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      id="root"
+      data-composition-id="main"
+      data-start="0"
+      data-duration="19.5"
+      data-width="1920"
+      data-height="1080"
+    >
+      <!-- =====================================================
+           AUDIO TRACKS (BGM + PRECISE SOUND EFFECTS)
+           ===================================================== -->
+      <audio
+        id="bgm"
+        src="assets/music/happy-beats-business-moves-vol-12-by-ende-dot-app.mp3"
+        data-start="0"
+        data-duration="19.5"
+        data-volume="0.8"
+      ></audio>
+
+      <audio
+        id="sfx-blast"
+        src="assets/sfx/impactPlate_medium_000.ogg"
+        data-start="0"
+        data-duration="0.61"
+        data-volume="0.9"
+      ></audio>
+
+      <audio
+        id="sfx-map-reveal"
+        src="assets/sfx/click_002.ogg"
+        data-start="3.82"
+        data-duration="0.05"
+        data-volume="0.75"
+      ></audio>
+
+      <audio
+        id="sfx-toggle"
+        src="assets/sfx/switch30.ogg"
+        data-start="8.74"
+        data-duration="0.36"
+        data-volume="0.8"
+      ></audio>
+
+      <audio
+        id="sfx-slider"
+        src="assets/sfx/switch_001.ogg"
+        data-start="9.83"
+        data-duration="0.62"
+        data-volume="0.75"
+      ></audio>
+
+      <audio
+        id="sfx-advisory"
+        src="assets/sfx/bong_001.ogg"
+        data-start="13.11"
+        data-duration="0.12"
+        data-volume="0.85"
+      ></audio>
+
+      <audio
+        id="sfx-outro"
+        src="assets/sfx/impactPlate_medium_000.ogg"
+        data-start="17.47"
+        data-duration="0.61"
+        data-volume="0.9"
+      ></audio>
+
+      <!-- =====================================================
+           SCENE 1: KINETIC SHOCKWAVE CUTOUT HOOK (0s - 3.8s)
+           ===================================================== -->
+      <div id="scene-1" class="clip" data-start="0" data-duration="3.8" data-track-index="0">
+        <div class="s1-canvas-wrap">
+          <!-- Animated shockwaves expanding from epicenter -->
+          <div id="sw-ring-1" class="shock-ring" style="width: 200px; height: 200px; border: 4px solid #ef4444; box-shadow: 0 0 50px #ef4444;"></div>
+          <div id="sw-ring-2" class="shock-ring" style="width: 350px; height: 350px; border: 3px solid #f59e0b; box-shadow: 0 0 40px #f59e0b;"></div>
+          <div id="sw-ring-3" class="shock-ring" style="width: 500px; height: 500px; border: 2px solid #ef4444; box-shadow: 0 0 30px #ef4444;"></div>
+          <div id="sw-ring-4" class="shock-ring" style="width: 700px; height: 700px; border: 2px solid #f59e0b; box-shadow: 0 0 20px #f59e0b;"></div>
+          <div id="sw-core" class="shock-ring" style="width: 60px; height: 60px; background: #ffffff; box-shadow: 0 0 60px #ffffff, 0 0 100px #f59e0b;"></div>
+        </div>
+
+        <!-- SVG Cutout Mask (Signature DreamHouse Effect) -->
+        <svg
+          class="s1-overlay-svg"
+          viewBox="0 0 1920 1080"
+          preserveAspectRatio="none"
+        >
+          <defs>
+            <mask id="cutout-mask" x="0" y="0" width="1920" height="1080">
+              <rect x="0" y="0" width="1920" height="1080" fill="#ffffff" />
+              <text
+                id="cutout-text"
+                x="960"
+                y="450"
+                text-anchor="middle"
+                dominant-baseline="central"
+                fill="#000000"
+                font-family="Syne, sans-serif"
+                font-weight="800"
+                font-size="112"
+                letter-spacing="0.04em"
+              >
+                THREAT ZONE
+              </text>
+            </mask>
+          </defs>
+          <rect
+            x="0"
+            y="0"
+            width="1920"
+            height="1080"
+            fill="#05070d"
+            mask="url(#cutout-mask)"
+          />
+        </svg>
+
+        <!-- Dynamic HUD Badge -->
+        <div class="s1-hud-badge">
+          <div class="live-dot"></div>
+          <span class="s1-hud-text">PROCESS SAFETY ENGINE // VCE &amp; BLEVE CONSECUENCE MODELING</span>
+        </div>
+      </div>
+
+      <!-- =====================================================
+           SCENE 2, 3, 4: INDUSTRIAL COMMAND DASHBOARD (3.8s - 17.5s)
+           ===================================================== -->
+      <div id="dashboard-shell" class="clip" data-start="3.8" data-duration="13.7" data-track-index="0">
+        <!-- TopBar -->
+        <header class="topbar">
+          <div class="brand">
+            <span class="brand-badge">TZ</span>
+            <span class="brand-title">Threat Zone</span>
+            <span class="brand-tagline">Industrial Process Safety Visualizer · India Facilities</span>
+          </div>
+          <div class="status-pill">
+            <span class="status-dot-green"></span>
+            <span>PHYSICS ENGINE LIVE</span>
+          </div>
+          <div class="top-tools">
+            <button class="top-btn">Copy Summary</button>
+            <button class="top-btn">Share URL</button>
+            <button class="top-btn" style="background: var(--ids-accent); color: #0b0f19; font-weight: 600;">Export PDF</button>
+          </div>
+        </header>
+
+        <!-- Main 3-Panel Grid -->
+        <main class="main-grid">
+          <!-- LEFT PANEL: Controls & Physics Parameters -->
+          <section class="panel-left">
+            <div class="panel-heading">SCENARIO &amp; SITE SELECTION</div>
+
+            <!-- Site Selector -->
+            <div class="field-group">
+              <div class="field-label">Selected Facility</div>
+              <div class="select-box">
+                <span id="site-name" style="font-weight: 600;">Jamnagar Refinery (RIL)</span>
+                <span style="color: #cbd5e1; font-size: 12px; font-weight: 500;">Gujarat · 22.47°N, 69.83°E</span>
+              </div>
+            </div>
+
+            <!-- Model Toggle (VCE / BLEVE) -->
+            <div class="field-group">
+              <div class="field-label">Consequence Model</div>
+              <div class="segment-toggle">
+                <div id="btn-vce" class="segment-btn active">VCE (Blast)</div>
+                <div id="btn-bleve" class="segment-btn">BLEVE (Fire)</div>
+              </div>
+            </div>
+
+            <!-- Parameters -->
+            <div class="field-group">
+              <div class="field-label">
+                <span>Vessel Operating Pressure</span>
+                <span id="val-pressure" class="field-value-mono">6.0 bar</span>
+              </div>
+              <div class="slider-track">
+                <div id="fill-pressure" class="slider-fill" style="width: 40%;"></div>
+              </div>
+            </div>
+
+            <div class="field-group">
+              <div class="field-label">
+                <span>Storage Volume</span>
+                <span id="val-volume" class="field-value-mono">1,000 m³</span>
+              </div>
+              <div class="slider-track">
+                <div id="fill-volume" class="slider-fill" style="width: 50%;"></div>
+              </div>
+            </div>
+
+            <!-- Live KPI Strip -->
+            <div class="panel-heading" style="margin-top: 6px;">LIVE CONSEQUENCE METRICS</div>
+            <div class="kpi-grid">
+              <div class="kpi-card">
+                <div class="kpi-title">TNT Equivalent</div>
+                <div class="kpi-num accent"><span id="kpi-tnt">1.12</span><span class="kpi-unit"> tons</span></div>
+              </div>
+              <div class="kpi-card">
+                <div class="kpi-title">Peak Overpressure</div>
+                <div class="kpi-num"><span id="kpi-pso">4.8</span><span class="kpi-unit"> psi</span></div>
+              </div>
+              <div class="kpi-card">
+                <div class="kpi-title">Safe Distance</div>
+                <div class="kpi-num"><span id="kpi-dist">880</span><span class="kpi-unit"> m</span></div>
+              </div>
+              <div class="kpi-card">
+                <div class="kpi-title">Release Energy</div>
+                <div class="kpi-num"><span id="kpi-energy">52,400</span><span class="kpi-unit"> MJ</span></div>
+              </div>
+            </div>
+          </section>
+
+          <!-- CENTER PANEL: Satellite Hazard Map Canvas -->
+          <section class="map-canvas-container">
+            <div class="sat-imagery"></div>
+
+            <!-- Simulated Refinery Structural Footprints -->
+            <svg class="refinery-grid" viewBox="0 0 1060 1016">
+              <!-- Tank farm shapes -->
+              <circle cx="530" cy="508" r="16" fill="#1e293b" stroke="#334155" stroke-width="2" />
+              <circle cx="490" cy="460" r="14" fill="#1e293b" stroke="#334155" stroke-width="2" />
+              <circle cx="570" cy="460" r="14" fill="#1e293b" stroke="#334155" stroke-width="2" />
+              <circle cx="490" cy="556" r="14" fill="#1e293b" stroke="#334155" stroke-width="2" />
+              <circle cx="570" cy="556" r="14" fill="#1e293b" stroke="#334155" stroke-width="2" />
+              <!-- Piping network & process units -->
+              <rect x="360" y="470" width="80" height="70" fill="rgba(30, 41, 59, 0.6)" stroke="#475569" stroke-width="1.5" />
+              <rect x="620" y="470" width="80" height="70" fill="rgba(30, 41, 59, 0.6)" stroke="#475569" stroke-width="1.5" />
+              <path d="M 360 508 L 700 508" stroke="rgba(148, 163, 184, 0.3)" stroke-width="2" stroke-dasharray="4 4" />
+            </svg>
+
+            <!-- Epicenter and Hazard Concentric Rings -->
+            <div class="crosshair-h"></div>
+            <div class="crosshair-v"></div>
+
+            <div id="ring-z4" class="hazard-ring"></div>
+            <div id="ring-z3" class="hazard-ring"></div>
+            <div id="ring-z2" class="hazard-ring"></div>
+            <div id="ring-z1" class="hazard-ring"></div>
+            <div class="epicenter"></div>
+
+            <!-- Map Layer Overlay Chips -->
+            <div class="map-top-bar">
+              <div class="layer-chip active">● Blast Overpressure (Pso)</div>
+              <div class="layer-chip">● Thermal Radiation</div>
+              <div class="layer-chip">● Fragment Range</div>
+            </div>
+
+            <!-- Live Wind Compass -->
+            <div class="wind-compass-widget">
+              <svg class="compass-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <line x1="12" y1="19" x2="12" y2="5"></line>
+                <polyline points="5 12 12 5 19 12"></polyline>
+              </svg>
+              <div>
+                <div style="font-size: 11px; color: #cbd5e1; text-transform: uppercase; font-weight: 600;">Wind Vector</div>
+                <div style="font-family: var(--font-mono); font-size: 13px; font-weight: 600; color: #ffffff;">240° WSW · 15 km/h</div>
+              </div>
+            </div>
+          </section>
+
+          <!-- RIGHT PANEL: Analytics & Safety Guidance -->
+          <section class="panel-right">
+            <div class="panel-heading">DISTANCE-DECAY OVERPRESSURE</div>
+
+            <!-- Interactive Risk Curve -->
+            <div class="chart-container">
+              <div class="chart-title">
+                <span style="color: #ffffff;">Peak P<sub>so</sub> vs Radial Distance</span>
+                <span style="font-family: var(--font-mono); color: #fbbf24; font-size: 12px; font-weight: 700;">8.4 psi @ 10m</span>
+              </div>
+              <svg class="chart-svg" viewBox="0 0 380 190">
+                <!-- Axes & Grid Lines -->
+                <line x1="40" y1="20" x2="40" y2="160" stroke="#475569" stroke-width="1.5" />
+                <line x1="40" y1="160" x2="360" y2="160" stroke="#475569" stroke-width="1.5" />
+                <line x1="40" y1="60" x2="360" y2="60" stroke="#334155" stroke-width="1" stroke-dasharray="4 4" />
+                <line x1="40" y1="110" x2="360" y2="110" stroke="#334155" stroke-width="1" stroke-dasharray="4 4" />
+                <!-- Decay Curve Path -->
+                <path
+                  id="decay-curve"
+                  class="curve-path"
+                  d="M 45 35 Q 100 120 180 145 T 355 158"
+                  fill="none"
+                  stroke="#fbbf24"
+                  stroke-width="3.5"
+                />
+                <!-- Axis Labels -->
+                <text x="5" y="38" fill="#e2e8f0" font-size="11" font-weight="600" font-family="JetBrains Mono">10 psi</text>
+                <text x="10" y="112" fill="#e2e8f0" font-size="11" font-weight="600" font-family="JetBrains Mono">1 psi</text>
+                <text x="40" y="178" fill="#e2e8f0" font-size="11" font-weight="600" font-family="JetBrains Mono">0m</text>
+                <text x="180" y="178" fill="#e2e8f0" font-size="11" font-weight="600" font-family="JetBrains Mono">800m</text>
+                <text x="330" y="178" fill="#e2e8f0" font-size="11" font-weight="600" font-family="JetBrains Mono">1,600m</text>
+              </svg>
+            </div>
+
+            <!-- Emergency Advisories -->
+            <div class="panel-heading" style="margin-top: 6px;">SAFETY ADVISORIES &amp; EVACUATION</div>
+            <div id="advisory-box" class="advisory-card">
+              <div class="advisory-header">
+                <span>⚠️ CRITICAL EVACUATION MANDATE</span>
+              </div>
+              <div class="advisory-body">
+                <strong>Evacuate all personnel beyond Zone 4 (&gt;1,420 m).</strong> Total structural collapse expected within 380m radius (Zone 1). Operations control must initiate emergency depressurization protocol immediately.
+              </div>
+            </div>
+
+            <div class="advisory-card" style="border-left-color: var(--ids-zone-low); background: rgba(16, 185, 129, 0.1); border-color: rgba(16, 185, 129, 0.35);">
+              <div class="advisory-header" style="color: #6ee7b7;">
+                <span>✓ REPAIRABLE BOUNDARY (ZONE 3)</span>
+              </div>
+              <div class="advisory-body" style="font-size: 13px; color: #f8fafc;">
+                Boundary at 920m represents threshold for minor structural repair and window sash displacement.
+              </div>
+            </div>
+          </section>
+        </main>
+      </div>
+
+      <!-- =====================================================
+           SCENE 5: OUTRO & AUTHORITY EMBLEM (17.5s - 19.5s)
+           ===================================================== -->
+      <div id="scene-5" class="clip" data-start="17.5" data-duration="2.0" data-track-index="0">
+        <!-- Shield Icon -->
+        <svg class="outro-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+          <polyline points="9 12 12 15 16 10"></polyline>
+        </svg>
+
+        <h1 class="outro-title">THREAT ZONE</h1>
+        <p class="outro-subtitle">
+          Real-time VCE &amp; BLEVE consequence visualizer for Indian oil &amp; gas refineries. Accurate. Fast. Emergency-ready.
+        </p>
+
+        <div class="outro-badge">
+          <span class="status-dot-green"></span>
+          <span>PHYSICS ENGINE LIVE · INDIA FACILITIES</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- =====================================================
+         GSAP TIMELINE ANIMATION (REGISTERED DETERMINISTIC)
+         ===================================================== -->
+    <script>
+      window.__timelines = window.__timelines || {};
+      const tl = gsap.timeline({ paused: true });
+      window.__timelines["main"] = tl;
+
+      // -----------------------------------------------------
+      // SCENE 1: HOOK SHOCKWAVES & PARTICLES (0.0s - 3.8s)
+      // -----------------------------------------------------
+      // Expand shockwave rings with pulse
+      tl.fromTo(
+        "#sw-core",
+        { scale: 0.5, opacity: 0.8 },
+        { scale: 2.2, opacity: 1, duration: 1.8, ease: "power2.out", yoyo: true, repeat: 1 },
+        0
+      );
+
+      tl.fromTo(
+        "#sw-ring-1",
+        { scale: 0.2, opacity: 0.9 },
+        { scale: 3.5, opacity: 0, duration: 2.4, ease: "power1.out", repeat: 1 },
+        0.2
+      );
+
+      tl.fromTo(
+        "#sw-ring-2",
+        { scale: 0.2, opacity: 0.8 },
+        { scale: 3.2, opacity: 0, duration: 2.5, ease: "power1.out", repeat: 1 },
+        0.5
+      );
+
+      tl.fromTo(
+        "#sw-ring-3",
+        { scale: 0.2, opacity: 0.7 },
+        { scale: 3.0, opacity: 0, duration: 2.6, ease: "power1.out", repeat: 1 },
+        0.8
+      );
+
+      tl.fromTo(
+        "#sw-ring-4",
+        { scale: 0.2, opacity: 0.6 },
+        { scale: 2.8, opacity: 0, duration: 2.7, ease: "power1.out", repeat: 1 },
+        1.1
+      );
+
+      tl.fromTo(
+        "#cutout-text",
+        { scale: 0.94, transformOrigin: "50% 50%" },
+        { scale: 1.04, duration: 3.5, ease: "sine.inOut" },
+        0
+      );
+
+      tl.fromTo(
+        ".s1-hud-badge",
+        { y: 30, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.8, ease: "power2.out" },
+        0.8
+      );
+
+      // Transition out of Scene 1 into Dashboard (at 3.8s)
+      tl.to("#scene-1", { opacity: 0, duration: 0.4, ease: "power2.in" }, 3.4);
+
+      // -----------------------------------------------------
+      // SCENE 2: DASHBOARD REVEAL & SATELLITE MAP (3.8s - 8.7s)
+      // -----------------------------------------------------
+      tl.fromTo(
+        "#dashboard-shell",
+        { opacity: 0, scale: 0.98 },
+        { opacity: 1, scale: 1, duration: 0.5, ease: "power3.out" },
+        3.8
+      );
+
+      // Hazard rings expand onto Jamnagar map
+      tl.fromTo(
+        "#ring-z1",
+        { scale: 0.1, opacity: 0 },
+        { scale: 1, opacity: 1, duration: 1.2, ease: "elastic.out(1, 0.75)" },
+        4.1
+      );
+
+      tl.fromTo(
+        "#ring-z2",
+        { scale: 0.1, opacity: 0 },
+        { scale: 1, opacity: 1, duration: 1.3, ease: "elastic.out(1, 0.75)" },
+        4.3
+      );
+
+      tl.fromTo(
+        "#ring-z3",
+        { scale: 0.1, opacity: 0 },
+        { scale: 1, opacity: 1, duration: 1.4, ease: "elastic.out(1, 0.75)" },
+        4.5
+      );
+
+      tl.fromTo(
+        "#ring-z4",
+        { scale: 0.1, opacity: 0 },
+        { scale: 1, opacity: 1, duration: 1.5, ease: "elastic.out(1, 0.75)" },
+        4.7
+      );
+
+      // -----------------------------------------------------
+      // SCENE 3: PHYSICS PARAMETERS RECALCULATION (8.7s - 13.1s)
+      // -----------------------------------------------------
+      // Toggle button slides to BLEVE
+      tl.to(
+        "#btn-vce",
+        { background: "transparent", color: "#cbd5e1", boxShadow: "none", duration: 0.25 },
+        8.74
+      );
+      tl.to(
+        "#btn-bleve",
+        { background: "#f59e0b", color: "#0f172a", boxShadow: "0 2px 8px rgba(245, 158, 11, 0.4)", duration: 0.25 },
+        8.74
+      );
+
+      // Sliders slide
+      tl.to("#fill-pressure", { width: "85%", duration: 1.2, ease: "power2.inOut" }, 9.2);
+      tl.to("#val-pressure", { textContent: "12.0 bar", duration: 1.2, snap: { textContent: 0.1 } }, 9.2);
+
+      tl.to("#fill-volume", { width: "75%", duration: 1.2, ease: "power2.inOut" }, 9.4);
+      tl.to("#val-volume", { textContent: "1,500 m³", duration: 1.2, snap: { textContent: 10 } }, 9.4);
+
+      // KPI Numbers tick up
+      tl.to("#kpi-tnt", { textContent: "2.41", duration: 1.4, ease: "power2.out", snap: { textContent: 0.01 } }, 9.5);
+      tl.to("#kpi-pso", { textContent: "8.4", duration: 1.4, ease: "power2.out", snap: { textContent: 0.1 } }, 9.5);
+      tl.to("#kpi-dist", { textContent: "1,420", duration: 1.4, ease: "power2.out", snap: { textContent: 10 } }, 9.5);
+      tl.to("#kpi-energy", { textContent: "112,800", duration: 1.4, ease: "power2.out", snap: { textContent: 100 } }, 9.5);
+
+      // Hazard rings expand with updated blast radius
+      tl.to("#ring-z1", { scale: 1.35, duration: 1.6, ease: "power2.out" }, 9.6);
+      tl.to("#ring-z2", { scale: 1.32, duration: 1.6, ease: "power2.out" }, 9.7);
+      tl.to("#ring-z3", { scale: 1.28, duration: 1.6, ease: "power2.out" }, 9.8);
+      tl.to("#ring-z4", { scale: 1.25, duration: 1.6, ease: "power2.out" }, 9.9);
+
+      // -----------------------------------------------------
+      // SCENE 4: ANALYTICS CURVE & ADVISORY (13.1s - 17.5s)
+      // -----------------------------------------------------
+      // Distance decay curve draws across chart
+      tl.to(
+        "#decay-curve",
+        { strokeDashoffset: 0, duration: 1.8, ease: "power2.out" },
+        13.11
+      );
+
+      // Advisory pulses red
+      tl.fromTo(
+        "#advisory-box",
+        { scale: 0.96, borderColor: "rgba(239, 68, 68, 0.4)" },
+        { scale: 1.02, borderColor: "rgba(239, 68, 68, 1)", duration: 0.5, yoyo: true, repeat: 3, ease: "sine.inOut" },
+        13.5
+      );
+
+      // -----------------------------------------------------
+      // SCENE 5: OUTRO & AUTHORITY BRANDMARK (17.5s - 19.5s)
+      // -----------------------------------------------------
+      tl.to("#dashboard-shell", { opacity: 0, duration: 0.4, ease: "power2.in" }, 17.1);
+
+      tl.fromTo(
+        "#scene-5",
+        { opacity: 0, scale: 0.92 },
+        { opacity: 1, scale: 1, duration: 0.5, ease: "power3.out" },
+        17.47
+      );
+
+      tl.fromTo(
+        ".outro-shield",
+        { scale: 0.5, rotation: -20, opacity: 0 },
+        { scale: 1, rotation: 0, opacity: 1, duration: 0.6, ease: "back.out(1.7)" },
+        17.5
+      );
+
+      tl.fromTo(
+        ".outro-title",
+        { y: 20, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.6, ease: "power2.out" },
+        17.7
+      );
+
+      tl.fromTo(
+        ".outro-subtitle",
+        { y: 15, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.6, ease: "power2.out" },
+        17.9
+      );
+
+      tl.fromTo(
+        ".outro-badge",
+        { scale: 0.8, opacity: 0 },
+        { scale: 1, opacity: 1, duration: 0.5, ease: "back.out(1.5)" },
+        18.1
+      );
+
+      tl.seek(0);
+    </script>
+  </body>
+</html>
