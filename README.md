@@ -20,26 +20,6 @@
 
 ---
 
-## 🎬 Product Launch Video
-
-Experience Threat Zone in action — from kinetic shockwave detonation to real-time consequence recalculation across satellite radar and distance-decay analytics.
-
-<div align="center">
-
-https://github.com/user-attachments/assets/threat-zone-launch.mp4
-
-<video src="brag-output/brag.mp4" poster="brag-output/brag.jpg" width="100%" controls autoplay loop muted playsinline>
-  Your browser does not support the video tag. You can view the video file directly: <a href="brag-output/brag.mp4">brag-output/brag.mp4</a>
-</video>
-
-> *Captured from live simulation engine: Jamnagar Refinery (RIL) VCE & BLEVE consequence modeling at 60 FPS.*
->
-> 📁 **Video Asset**: [`brag-output/brag.mp4`](brag-output/brag.mp4) • **Poster Still**: [`brag-output/brag.jpg`](brag-output/brag.jpg)
-
-</div>
-
----
-
 ## 📌 Overview
 
 Industrial consequence modeling has traditionally been confined to rigid, legacy desktop software, complex spreadsheets, and static PDF reports. 
