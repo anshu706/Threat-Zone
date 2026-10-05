@@ -1,0 +1,109 @@
+[p] Threat Zone
+[p] VCE & BLEVE · India Industrial Safety
+[span] Physics engine live
+[button] control
+[button] map
+[button] analytics
+[h2] Scenario & physics input
+[label] Facility location
+[option] Jamnagar
+[option] Reliance Jamnagar Refinery Complex
+[option] Mumbai
+[option] HPCL Mumbai Refinery
+[option] Panipat
+[option] IOCL Panipat Refinery
+[option] Kochi
+[option] BPCL Kochi Refinery
+[option] Visakhapatnam
+[option] HPCL Visakh Refinery
+[option] Mathura
+[option] IOCL Mathura Refinery
+[option] Hazira
+[option] ONGC Hazira LNG & Petrochemical Hub
+[option] Mangalore
+[option] MRPL Mangalore Refinery
+[option] Digboi
+[option] IOCL Digboi Refinery
+[option] Dahej
+[option] Dahej Petrochemical & Storage Complex
+[span] Explosion model
+[button] VCE
+[button] BLEVE
+[label] Scenario preset
+[option] Liquid Trapping & Thermal Expansion
+[option] Vapor Space Flammable Mixture (Under-Loaded Tank)
+[option] Over-Vacuum & Nitrogen Blanketing Loss
+[option] Rapid Fill & Splash Loading Static Discharge
+[label] Fuel type
+[option] Methane
+[option] CH₄
+[option] Propane
+[option] C₃H₈
+[option] Gasoline
+[option] C₅H₁₂ - C₈H₁₈
+[option] Benzene
+[option] C₆H₆
+[option] Crude Oil
+[option] Complex Mix
+[option] Fuel Oil / Diesel
+[option] C₁₂H₂₆ - C₂₀H₄₂
+[label] Storage pressure
+[span] bar
+[label] Temperature
+[label] Tank capacity
+[span] 0.5
+[label] Tank fill
+[span] 100
+[label] Ambient temp
+[label] Humidity
+[label] Wind speed
+[span] km/h
+[label] Wind direction
+[span] 240
+[button] Reset defaults
+[span] TNT equivalent
+[span] 0.076
+[span] tons
+[span] Peak P
+[span] 1880.9
+[span] psi
+[span] Safe distance
+[span] 180 m
+[span] Release energy
+[span] 355.81
+[button] Blast rings
+[button] Thermal contours
+[button] Fragment throw
+[div] Tiles © Esri |
+[a] MapLibre
+[span] PITCH
+[span] BEARING
+[strong] -22
+[span] ZOOM
+[strong] 12.5
+[span] Right-click + drag to tilt & orbit in 3D
+[span] Jamnagar
+[span] N 22°20'52.8"
+[span] E 69°52'22.8"
+[h2] Analytics & guidance
+[button] Decay
+[button] Compare
+[button] Safety
+[p] Distance-decay analysis
+[p] Overpressure (psi) and thermal flux (kW/m²) vs. standoff distance from ignition point.
+[button] Blast
+[button] Thermal
+[p] Blast pressure at each distance from the explosion.
+[tspan] 12.4
+[tspan] 43.4
+[tspan] 101
+[tspan] 132
+[tspan] 163
+[tspan] 194
+[tspan] 225
+[tspan] 269.2
+[tspan] Distance from center (m)
+[tspan] Pressure (bar)
+[tspan] ZONE 1
+[tspan] ZONE 2
+[tspan] ZONE 3

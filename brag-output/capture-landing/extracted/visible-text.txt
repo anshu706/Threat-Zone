@@ -1,0 +1,437 @@
+[div] THREAT ZONE
+[span] DIRECTORS & SCENARIOS
+[span] Close
+[div] DIRECTORY · 10 INDIAN REFINERIES & CHEMICAL CONSEQUENCE MODELS
+[a] Jamnagar Super-Refinery
+[span] Reliance Industries · Refining & Petrochemicals
+[a] BLEVE Fireball Dynamics
+[span] Pressurized Hydrocarbon Sphere Catastrophe
+[a] Kochi Marine Terminal
+[span] Bharat Petroleum · Offshore Cryogenic Hub
+[a] Panipat Naphtha Cracker
+[span] Indian Oil Corporation · Polymer Mega-Hub
+[a] Vapor Cloud Detonation (VCE)
+[span] TNO Multi-Energy Atmospheric Dispersion
+[a] Mangalore Petrochemicals
+[span] ONGC MRPL · Coastal Refining Center
+[a] Paradip Deep-Water Terminal
+[span] IOCL · East Coast Energy Corridor
+[span] Critical Infrastructure
+[span] Jamnagar Super-Refinery
+[span] Crude Capacity
+[span] 1,240,000 BPD
+[button] Launch
+[p] THREAT ZONE IS AN INDUSTRIAL CONSEQUENCE & BLAST PHYSICS PLATFORM SAFEGUARDING 10 CRITICAL INDIAN REFINERIES.
+[button] THREAT ZONE
+[span] LIVE PHYSICS
+[button] Scenarios
+[button] World Radar
+[button] Simulator
+[button] Results
+[button] Hazard Curves
+[button] Safety
+[span] Dashboard
+[span] Menu
+[tspan] THREAT
+[tspan] ZONE
+[tspan] THREAT
+[tspan] ZONE
+[span] Jamnagar
+[span] Gujarat
+[span] , INDIA
+[span] 22.35
+[span] 69.87
+[p] Autonomous blast physics, consequence modeling, and live consequence radar for Indian refineries and hazardous petrochemical complexes.
+[button] Launch Simulator
+[button] Explore Scenarios
+[button] Full Dashboard
+[span] SCROLL DOWN
+[span] Region
+[strong] JAMNAGAR
+[span] State
+[strong] GUJARAT
+[span] Type
+[strong] OVERPRESSURE
+[span] TNT
+[strong] 76.03
+[span] Energy
+[strong] 355.81
+[span] Safe boundary
+[strong] 180
+[span] India facilities
+[span] Engine
+[strong] LIVE
+[span] Region
+[strong] JAMNAGAR
+[span] State
+[strong] GUJARAT
+[span] Type
+[strong] OVERPRESSURE
+[span] TNT
+[strong] 76.03
+[span] Energy
+[strong] 355.81
+[span] Safe boundary
+[strong] 180
+[span] India facilities
+[span] Engine
+[strong] LIVE
+[span] Reliance Industries · Jamnagar, Gujarat
+[span] Peak Overpressure
+[strong] 8.2 PSI
+[span] TNT Equivalence
+[strong] 2,400 kg
+[span] Mach Shock Speed
+[strong] Mach 2.1
+[span] Evacuation Zone
+[strong] 1,250 m
+[div] / SCENARIO ARCHIVE ·
+[div] VCE Multi-Energy Model
+[h2] Vapor Cloud Explosion (VCE)
+[p] Atmospheric catastrophic release of 50m³ pressurized LPG, prompt vapor dispersion under calm wind (2.5 m/s), and rapid flame front acceleration through densely congested process pipe-racks.
+[button] Run In Simulator
+[button] Inspect Consequence Physics
+[span] MRPL · Mangalore, Karnataka
+[span] Fireball Diameter
+[strong] 210 m
+[span] Burn Duration
+[strong] 18.4 s
+[span] Peak Heat Flux
+[strong] 37.5 kW/m²
+[span] 1% Lethality Radius
+[strong] 480 m
+[div] / SCENARIO ARCHIVE ·
+[div] BLEVE Thermal Model
+[h2] Spherical BLEVE Fireball
+[p] Boiling Liquid Expanding Vapor Explosion in a 2,000 m³ Horton sphere following sustained jet fire impingement. Yields massive atmospheric fireball and intense radiative heat flux.
+[button] Run In Simulator
+[button] Inspect Consequence Physics
+[span] BPCL · Kochi Marine Terminal, Kerala
+[span] Discharge Pressure
+[strong] 65.0 Bar
+[span] Torch Flame Length
+[strong] 85 m
+[span] Radiative Fraction
+[strong] 0.28
+[span] Safe Marine Clearance
+[strong] 620 m
+[div] / SCENARIO ARCHIVE ·
+[div] Jet Radiation Model
+[h2] High-Pressure Jet Fire
+[p] Subsea pipeline and marine loading manifold failure under 65 bar operating pressure. Continuous sonic torch flame with directional radiative impingement on surrounding berthing arms.
+[button] Run In Simulator
+[button] Inspect Consequence Physics
+[span] IOCL · Panipat, Haryana
+[span] Confinement Level
+[strong] Class 5 (Dense)
+[span] Shockwave Speed
+[strong] 1,980 m/s
+[span] Reflection Factor
+[strong] 2.8x
+[span] Structural Safe Zone
+[strong] 1,420 m
+[div] / SCENARIO ARCHIVE ·
+[div] DDT Confinement Model
+[h2] Confined Detonation Wave
+[p] High-confinement ethylene and propylene release within tightly nested heat exchanger trains. Rapid turbulence feedback triggers supersonic shock wave with secondary fragment throw.
+[button] Run In Simulator
+[button] Inspect Consequence Physics
+[p] 01 / Live Radar
+[h2] Indian Energy Facilities & Blast Contour Map
+[p] Satellite consequence map tracking 10 high-consequence refineries. Real-time blast overpressure (PSI) & thermal radiation (kW/m²) zones.
+[span] Active Facility ·
+[span] Jamnagar
+[span] Gujarat
+[button] Fullscreen map
+[span] Threat matrix · 3D
+[span] VOLUMETRIC
+[p] Reliance Jamnagar Refinery Complex
+[p] Jamnagar
+[p] Gujarat
+[button] Satellite
+[button] All Facilities
+[span] 3D Extrusion
+[span] LIVE SENSOR
+[div] Tiles © Esri |
+[a] MapLibre
+[span] PITCH
+[span] BEARING
+[strong] -22
+[span] ZOOM
+[strong] 12.5
+[span] Right-click + drag to tilt & orbit in 3D
+[span] Jamnagar
+[span] N 22°20'52.8"
+[span] E 69°52'22.8"
+[span] 13.7
+[span] 20.9
+[span] 42.3
+[span] 179.5
+[span] Wind (
+[span] 240
+[p] 02 / Live Physics Engine
+[h2] Configure Facility & Consequence Parameters
+[p] Select a target facility, choose the catastrophic release mechanism, and tune operating pressures, temperatures, and vessel fill percentages.
+[p] Step 1 — Choose Facility
+[p] Select one of 10 Indian refineries, LNG terminals, or petrochemical crackers.
+[button] All
+[button] Gujarat
+[button] Maharashtra
+[button] Haryana
+[button] Kerala
+[button] Andhra Pradesh
+[button] Uttar Pradesh
+[button] Karnataka
+[button] Assam
+[span] 001
+[span] Gujarat
+[span] Jamnagar
+[span] Reliance Jamnagar Refinery Complex
+[span] Reliance Industries
+[span] Refinery
+[span] 002
+[span] Maharashtra
+[span] Mumbai
+[span] HPCL Mumbai Refinery
+[span] HPCL
+[span] Refinery
+[span] 003
+[span] Haryana
+[span] Panipat
+[span] IOCL Panipat Refinery
+[span] Indian Oil
+[span] Refinery
+[span] 004
+[span] Kerala
+[span] Kochi
+[span] BPCL Kochi Refinery
+[span] BPCL
+[span] Refinery
+[span] 005
+[span] Andhra Pradesh
+[span] Visakhapatnam
+[span] HPCL Visakh Refinery
+[span] HPCL
+[span] Refinery
+[span] 006
+[span] Uttar Pradesh
+[span] Mathura
+[span] IOCL Mathura Refinery
+[span] Indian Oil
+[span] Refinery
+[span] 007
+[span] Gujarat
+[span] Hazira
+[span] ONGC Hazira LNG & Petrochemical Hub
+[span] ONGC / Shell
+[span] LNG Terminal
+[span] 008
+[span] Karnataka
+[span] Mangalore
+[span] MRPL Mangalore Refinery
+[span] MRPL / ONGC
+[span] Refinery
+[span] 009
+[span] Assam
+[span] Digboi
+[span] IOCL Digboi Refinery
+[span] Indian Oil
+[span] Refinery
+[span] 010
+[span] Gujarat
+[span] Dahej
+[span] Dahej Petrochemical & Storage Complex
+[span] GAIL / Reliance
+[span] Petrochemical
+[p] Step 2 — Physics Parameters
+[p] Scenario type, hydrocarbon material, vessel volume, operating pressure, temperature, and atmospheric conditions.
+[span] Engine live
+[button] Reset defaults
+[span] Scenario Profile
+[span] OVERPRESSURE
+[span] Operational Scenario
+[div] Select an operational deviation preset. These presets represent under-loading anomalies or critical refinery line configurations.
+[option] Liquid Trapping & Thermal Expansion
+[option] OVERPRESSURE
+[option] Vapor Space Flammable Mixture (Under-Loaded Tank)
+[option] VCE
+[option] Over-Vacuum & Nitrogen Blanketing Loss
+[option] VCE
+[option] Rapid Fill & Splash Loading Static Discharge
+[option] VCE
+[option] Pressurized Storage Sphere BLEVE
+[option] BLEVE
+[p] Liquid is trapped in a pipe section between two closed block valves. External solar heating or fire exposure causes thermal expansion. Since the liquid is incompressible, pressure rises rapidly (~10–15 bar/°C) until physical rupture occurs, releasing flashing superheated hydrocarbon.
+[span] Fuel / Material Setup
+[div] Determines specific heat of combustion (ΔHc), boiling points, and vapor density profiles used in VCE and BLEVE calculations.
+[option] Methane
+[option] CH₄
+[option] Propane
+[option] C₃H₈
+[option] Gasoline
+[option] C₅H₁₂ - C₈H₁₈
+[option] Benzene
+[option] C₆H₆
+[option] Crude Oil
+[option] Complex Mix
+[option] Fuel Oil / Diesel
+[option] C₁₂H₂₆ - C₂₀H₄₂
+[span] Combustion
+[span] 46.4
+[span] MJ/kg
+[span] Boiling Pt
+[span] -42.1
+[span] Liq Density
+[span] 493
+[span] kg/m³
+[span] Stoich Limit
+[span] % vol
+[span] Physical Parameters
+[label] Equipment Vol (m³)
+[span] Min: 0.1
+[span] Max:
+[span] Liquid Fill (%)
+[div] Critical parameter for under-loading. For VCEs, lower fill level leaves more vapor space, increasing available explosive vapor mass. For BLEVE, higher fill level increases liquid release inventory.
+[span] 0% (Empty)
+[span] 100% (Full)
+[label] Op/Rupture Pressure (bar)
+[span] 0.01 bar
+[span] Max:
+[span] 200
+[span] bar
+[span] Op/Solar Temp (°C)
+[div] Used to evaluate physical overpressure expansion and flashing dynamics. Liquids above boiling point flash instantly when pressure drops.
+[span] -50°C
+[span] 150°C
+[span] Explosive Yield (%)
+[div] TNT equivalent efficiency yield factor (typical values range between 3% and 10%). Corresponds to the fraction of release chemical energy converted to blast wave energy.
+[span] Min: 1%
+[span] Max: 30%
+[span] Atmospheric Conditions
+[label] Ambient Temp (°C)
+[span] -10°C
+[span] 50°C
+[span] Relative Humidity (%)
+[div] Used in BLEVE fireball thermal radiation calculations. High moisture levels absorb infrared thermal radiation, reducing heat flux at distance (Atmospheric Transmissivity).
+[span] 0% (Dry)
+[span] 100% (Saturated)
+[p] Physics engine active — threat vectors update in real time as you adjust parameters.
+[p] 03 / Impact Assessment
+[h2] Consequence & Damage Assessment
+[p] Calculated blast shock strength, structural destruction boundaries, and safe public evacuation perimeters.
+[span] Threat Level
+[span] Low
+[span] Low
+[span] Moderate
+[span] High
+[span] Critical
+[p] In plain terms
+[p] Moderate impact — follow site emergency plans.
+[span] Lower risk
+[span] Blast strength (TNT)
+[span] 76.03
+[span] Total energy released
+[span] 355.81
+[span] Fuel involved
+[span] 153.36
+[span] Keep people beyond
+[span] 180
+[p] Blast zones
+[p] Distance rings for pressure waves. Zone 4 is the safest outer limit.
+[p] Zone 1: Total Destruction
+[p] Buildings can collapse. Very high risk of death.
+[div] 13.7
+[span] 0.7
+[span] bar
+[p] Zone 2: Serious Damage
+[p] Major equipment damage and serious injuries.
+[div] 20.9
+[span] 0.3
+[span] bar
+[p] Zone 3: Moderate Damage
+[p] Broken windows and moderate structural damage.
+[div] 42.3
+[span] 0.1
+[span] bar
+[p] Zone 4: Safe Boundary
+[p] Safest distance — only minor effects expected.
+[div] 179.5
+[span] 0.02
+[span] bar
+[p] Heat zones
+[p] No fireball heat for this scenario. Choose a BLEVE scenario to see heat zones.
+[p] 04 / Quantitative Analytics
+[h2] Hazard Decay Curves & Environmental Sensitivity
+[p] Evaluate distance decay profiles for peak overpressure and thermal flux across varying ambient temperatures and wind conditions.
+[button] Hazard Curves
+[button] Compare & Environment
+[button] Blast Overpressure (PSI)
+[button] Thermal Radiation (kW/m²)
+[p] Blast pressure at each distance from the explosion.
+[tspan] 16.9
+[tspan] 25.7
+[tspan] 34.6
+[tspan] 43.4
+[tspan] 52.3
+[tspan] 61.1
+[tspan] 78.9
+[tspan] 87.7
+[tspan] 96.6
+[tspan] 109.9
+[tspan] 123.1
+[tspan] 136.4
+[tspan] 149.7
+[tspan] 163
+[tspan] 176.3
+[tspan] 189.6
+[tspan] 202.8
+[tspan] 216.1
+[tspan] 229.4
+[tspan] 242.7
+[tspan] 256
+[tspan] 269.2
+[tspan] Distance from center (m)
+[tspan] Pressure (bar)
+[tspan] ZONE 1
+[tspan] ZONE 2
+[tspan] ZONE 3
+[p] 05 / Action Protocol
+[h2] Emergency Protocols & OISD Guidelines
+[p] Automated mitigation strategies, operator actions, and OISD safety standard compliance protocols.
+[p] Safety notes
+[h3] What to do for this scenario
+[p] Plain guidance based on the scenario you selected. Use with your site's official procedures.
+[p] The risk
+[p] Liquid trapped between valves
+[p] Liquid stuck in a pipe can heat up and burst the pipe. When it breaks, fuel vapor escapes and can explode.
+[p] Equipment fixes
+[li] Install relief valves on pipe sections that can be closed off.
+[li] Send relief lines to a safe flare or low-pressure header — not open air.
+[li] Use valves that release pressure if trapped liquid expands.
+[p] Operator actions
+[li] Drain pipes before locking valves closed (LOTO).
+[li] Check line temperatures daily, especially on sun-exposed pipes.
+[li] Limit transfers in very hot weather for light hydrocarbons.
+[h2] Threat Zone safeguards critical energy infrastructure through rigorous consequence physics & autonomous blast intelligence.
+[p] Modeling VCE overpressure and BLEVE thermal radiation envelopes across 10 major refineries and chemical plants in India.
+[span] Jamnagar, Gujarat
+[span] 13:13:44
+[span] Reliance Complex (1.24M BPD)
+[span] Mumbai, Maharashtra
+[span] 13:13:44
+[span] BPCL / HPCL Chembur Hub
+[span] Panipat, Haryana
+[span] 13:13:44
+[span] IOCL Petrochemical Complex
+[span] Kochi, Kerala
+[span] 13:13:44
+[span] BPCL Marine Terminal
+[span] Hazard Bulletins & Consequence Advisories
+[p] Bulletin delivery is not connected in this client. No email address is collected or stored here.
+[button] Scenarios
+[button] World Radar
+[button] Simulator
+[button] Blast Results
+[button] Decay Curves
+[button] Safety Protocols
+[div] THREAT ZONE · OISD-116 / 169 & TNO MULTI-ENERGY COMPLIANT
