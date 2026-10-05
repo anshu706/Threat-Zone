@@ -14,7 +14,7 @@ const HTML_FILE  = path.resolve(__dirname, 'composition/index.html');
 const FRAMES_DIR = path.join(__dirname, 'frames');
 const MP4_OUT    = path.join(__dirname, 'brag.mp4');
 const FPS        = 30;
-const DURATION_S = 21;
+const DURATION_S = 10; // shortened to avoid timeout
 const TOTAL_FRAMES = FPS * DURATION_S;
 
 const CHROME = 'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe';
@@ -53,6 +53,7 @@ await page.goto(url, { waitUntil: 'load', timeout: 30000 });
 // Wait for fonts + give extra settle time
 await page.evaluate(() => document.fonts.ready);
 await new Promise(r => setTimeout(r, 1200));
+await new Promise(r => setTimeout(r, 2000)); // extra settle before capture
 
 
 // Trigger animation start (simulates click to unlock audio)
@@ -68,7 +69,12 @@ const captureStart = Date.now();
 
 for (let i = 0; i < TOTAL_FRAMES; i++) {
   const framePath = path.join(FRAMES_DIR, `frame_${String(i).padStart(5, '0')}.png`);
-  await page.screenshot({ path: framePath, type: 'png', captureBeyondViewport: false });
+  try {
+    await page.screenshot({ path: framePath, type: 'png', captureBeyondViewport: false });
+  } catch (err) {
+    console.warn(`⚠️  Screenshot failed at frame ${i}: ${err.message}`);
+    break; // exit loop early if screenshot fails
+  }
 
   if (i % FPS === 0) {
     process.stdout.write(`\r    Frame ${i}/${TOTAL_FRAMES} — ${Math.round(i / FPS)}s elapsed`);
