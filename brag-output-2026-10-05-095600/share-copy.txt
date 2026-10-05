@@ -1,0 +1,3 @@
+THREAT ZONE models blast overpressure and BLEVE fireballs across 10 Indian refineries. Autonomous consequence physics — live.
+
+Built with React + Vite · deck.gl 3D risk maps · TNO Multi-Energy VCE/BLEVE models · OISD 116 compliant
