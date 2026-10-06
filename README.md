@@ -2,7 +2,7 @@
 
 <div align="center">
 
-![Threat Zone Banner](brag-output/brag.jpg)
+[![Threat Zone Banner](brag-output/brag.jpg)](#-product-launch-video)
 
 ### **Industrial Process Safety & Consequence Modeling Engine**
 *Real-time VCE & BLEVE consequence visualizer for Indian oil & gas refineries, petrochemical complexes, and chemical facilities.*
@@ -26,15 +26,29 @@ Experience Threat Zone in action — from kinetic shockwave detonation to real-t
 
 <div align="center">
 
-https://github.com/user-attachments/assets/threat-zone-launch.mp4
+<a href="brag-output/brag.mp4" title="Click to watch full 1080p HD video with audio">
+  <img src="brag-output/brag.gif" alt="Threat Zone Product Launch Video - Continuous Playing Mode" width="100%" />
+</a>
 
-<video src="brag-output/brag.mp4" poster="brag-output/brag.jpg" width="100%" controls autoplay loop muted playsinline>
-  Your browser does not support the video tag. You can view the video file directly: <a href="brag-output/brag.mp4">brag-output/brag.mp4</a>
-</video>
+<p align="center">
+  <em>⚡ <b>Live Playing Mode:</b> Jamnagar Refinery (RIL) VCE & BLEVE consequence simulation loop</em><br>
+  🎥 <b><a href="brag-output/brag.mp4">▶️ Watch Full 1080p 60 FPS Video with Audio (brag.mp4)</a></b> • 
+  <a href="brag-output/brag.webp">High-Res WebP</a> • 
+  <a href="brag-output/brag.gif">Looping GIF</a>
+</p>
+
+<details>
+  <summary><b>🎬 Open Native HTML5 Video Player (MP4)</b></summary>
+  <br>
+  <video src="brag-output/brag.mp4" poster="brag-output/brag.jpg" width="100%" autoplay loop muted playsinline controls>
+    <source src="brag-output/brag.mp4" type="video/mp4">
+    Your browser does not support the video tag. You can view the video file directly: <a href="brag-output/brag.mp4">brag-output/brag.mp4</a>
+  </video>
+</details>
 
 > *Captured from live simulation engine: Jamnagar Refinery (RIL) VCE & BLEVE consequence modeling at 60 FPS.*
 >
-> 📁 **Video Asset**: [`brag-output/brag.mp4`](brag-output/brag.mp4) • **Poster Still**: [`brag-output/brag.jpg`](brag-output/brag.jpg)
+> 📁 **Video Asset**: [`brag-output/brag.mp4`](brag-output/brag.mp4) • **Poster Still**: [`brag-output/brag.jpg`](brag-output/brag.jpg) • **Loop Asset**: [`brag-output/brag.gif`](brag-output/brag.gif)
 
 </div>
 
