@@ -24,10 +24,16 @@
 
 <div align="center">
 
-<video src="brag-output/brag.mp4" poster="brag-output/brag.jpg" width="100%" autoplay loop muted playsinline controls>
-  <source src="brag-output/brag.mp4" type="video/mp4">
-  Your browser does not support the video tag.
+<video src="brag-output/threat-zone-demo.mp4" poster="brag-output/brag.jpg" width="100%" autoplay loop muted playsinline controls>
+  <source src="brag-output/threat-zone-demo.mp4" type="video/mp4">
+  <a href="brag-output/threat-zone-demo.mp4">
+    <img src="brag-output/brag.gif" alt="Threat Zone Product Launch Demo" width="100%" />
+  </a>
 </video>
+
+<p align="center">
+  🎬 <a href="brag-output/threat-zone-demo.mp4"><b>Watch Full HD Video with Audio (threat-zone-demo.mp4)</b></a>
+</p>
 
 </div>
 

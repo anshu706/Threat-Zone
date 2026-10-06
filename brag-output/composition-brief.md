@@ -5,7 +5,7 @@ Create a short, cinematic, high-impact launch-style brag video for Threat Zone s
 
 ## Output
 - Composition directory: `brag-output/composition/`
-- Rendered video: `brag-output/brag.mp4`
+- Rendered video: `brag-output/threat-zone-demo.mp4`
 - Format: landscape — 1920x1080
 - Duration: 19.5s, 30fps
 
