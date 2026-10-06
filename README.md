@@ -2,12 +2,17 @@
 
 <div align="center">
 
-
-### 🎬 Launch Video Walkthrough
-
-<video src="brag-output/brag.mp4" controls="controls" muted="muted" poster="assets/poster.jpg" width="100%" style="max-height: 600px; border-radius: 12px; box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);">
-  <p>Your browser does not support HTML5 video. <a href="assets/constructiq-demo.mp4"><b>Click here to view or download the demo video</b></a>.</p>
+<video src="brag-output/threat-zone-demo.mp4" poster="brag-output/brag.jpg" width="100%" autoplay loop muted playsinline controls style="max-height: 600px; border-radius: 12px; box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);">
+  <source src="brag-output/threat-zone-demo.mp4" type="video/mp4">
+  <a href="brag-output/threat-zone-demo.mp4" title="Click to watch full 1080p HD video with audio">
+    <img src="brag-output/brag.gif" alt="Threat Zone Product Launch Walkthrough" width="100%" style="border-radius: 12px; box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);" />
+  </a>
+  <p>Your browser does not support HTML5 video. <a href="brag-output/threat-zone-demo.mp4"><b>Click here to view or download the demo video</b></a>.</p>
 </video>
+
+<p align="center">
+  🎬 <a href="brag-output/threat-zone-demo.mp4"><b>Watch Full 1080p Video with Audio (threat-zone-demo.mp4)</b></a> • <a href="brag-output/brag.webp">High-Res WebP</a> • <a href="brag-output/brag.gif">Looping GIF</a>
+</p>
 
 ### **Industrial Process Safety & Consequence Modeling Engine**
 *Real-time VCE & BLEVE consequence visualizer for Indian oil & gas refineries, petrochemical complexes, and chemical facilities.*
@@ -19,26 +24,7 @@
 [![GSAP 3](https://img.shields.io/badge/GSAP-3.15-88ce02?style=for-the-badge&logo=greensock&logoColor=white)](https://greensock.com/gsap/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](LICENSE)
 
-[Launch Simulator](#-getting-started) • [Watch Demo](#-product-launch-video) • [Physics Architecture](#-consequence-physics-engine) • [Refinery Presets](#-indian-refinery-presets) • [Design System](#-control-room-design-system)
-
-</div>
-
----
-
-## 🎬 Product Launch Video
-
-<div align="center">
-
-<video src="brag-output/threat-zone-demo.mp4" poster="brag-output/brag.jpg" width="100%" autoplay loop muted playsinline controls>
-  <source src="brag-output/threat-zone-demo.mp4" type="video/mp4">
-  <a href="brag-output/threat-zone-demo.mp4">
-    <img src="brag-output/brag.gif" alt="Threat Zone Product Launch Demo" width="100%" />
-  </a>
-</video>
-
-<p align="center">
-  🎬 <a href="brag-output/threat-zone-demo.mp4"><b>Watch Full HD Video with Audio (threat-zone-demo.mp4)</b></a>
-</p>
+[Launch Simulator](#-getting-started) • [Physics Architecture](#-consequence-physics-engine) • [Refinery Presets](#-indian-refinery-presets) • [Design System](#-control-room-design-system)
 
 </div>
 
