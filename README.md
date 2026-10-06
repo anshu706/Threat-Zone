@@ -170,7 +170,6 @@ ThreatZoneApp
    ```bash
    npm run dev
    ```
-   Open your browser at `http://localhost:5173` to launch the simulator.
 
 4. **Build for production:**
    ```bash
