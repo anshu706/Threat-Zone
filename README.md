@@ -22,19 +22,12 @@
 
 ## 🎬 Product Launch Video
 
-Experience Threat Zone in action — from kinetic shockwave detonation to real-time consequence recalculation across satellite radar and distance-decay analytics.
-
 <div align="center">
 
-https://github.com/user-attachments/assets/threat-zone-launch.mp4
-
-<video src="brag-output/brag.mp4" poster="brag-output/brag.jpg" width="100%" controls autoplay loop muted playsinline>
-  Your browser does not support the video tag. You can view the video file directly: <a href="brag-output/brag.mp4">brag-output/brag.mp4</a>
+<video src="brag-output/brag.mp4" poster="brag-output/brag.jpg" width="100%" autoplay loop muted playsinline controls>
+  <source src="brag-output/brag.mp4" type="video/mp4">
+  Your browser does not support the video tag.
 </video>
-
-> *Captured from live simulation engine: Jamnagar Refinery (RIL) VCE & BLEVE consequence modeling at 60 FPS.*
->
-> 📁 **Video Asset**: [`brag-output/brag.mp4`](brag-output/brag.mp4) • **Poster Still**: [`brag-output/brag.jpg`](brag-output/brag.jpg)
 
 </div>
 
@@ -188,21 +181,6 @@ ThreatZoneApp
    ```bash
    npm run lint
    ```
-
----
-
-## 🎥 Launch Video Reproduction (`/brag`)
-
-The included launch video was created and rendered using the automated **Hyperframes Engine**:
-
-```bash
-# Verify composition layout and WCAG contrast gates
-cd brag-output/composition
-npx hyperframes check
-
-# Render 1080p 60FPS video
-npx hyperframes render --output ../brag.mp4
-```
 
 ---
 
