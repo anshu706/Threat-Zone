@@ -2,7 +2,12 @@
 
 <div align="center">
 
-[![Threat Zone Banner](brag-output/brag.jpg)](#-product-launch-video)
+
+### 🎬 Launch Video Walkthrough
+
+<video src="brag-output/brag.mp4" controls="controls" muted="muted" poster="assets/poster.jpg" width="100%" style="max-height: 600px; border-radius: 12px; box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);">
+  <p>Your browser does not support HTML5 video. <a href="assets/constructiq-demo.mp4"><b>Click here to view or download the demo video</b></a>.</p>
+</video>
 
 ### **Industrial Process Safety & Consequence Modeling Engine**
 *Real-time VCE & BLEVE consequence visualizer for Indian oil & gas refineries, petrochemical complexes, and chemical facilities.*
